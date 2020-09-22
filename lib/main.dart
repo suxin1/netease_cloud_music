@@ -1,5 +1,5 @@
 import "package:flutter/material.dart";
-import "package:NeteaseMusicMobileFake/screen/home/home.dart";
+import "package:NeteaseMusicMobileFake/screen/home/Home.dart";
 
 void main() {
   runApp(MaterialApp(
