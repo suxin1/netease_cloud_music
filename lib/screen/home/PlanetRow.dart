@@ -1,4 +1,5 @@
 import "package:flutter/material.dart";
+import "package:NeteaseMusicMobileFake/screen/detail/Detail.dart";
 
 final baseTextStyle = const TextStyle(fontFamily: "Poppins");
 
@@ -18,7 +19,10 @@ final subHeaderTextStyle = regularTextStyle.copyWith(
 Widget _planetCardRow({String text, String img}) {
   return Row(
     children: [
-      Image.asset(img, height: 12,),
+      Image.asset(
+        img,
+        height: 12,
+      ),
       Container(width: 8.0),
       Text(text, style: regularTextStyle)
     ],
@@ -57,11 +61,13 @@ Stack planetFactory(PlanetData data) {
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
               Expanded(
-                child: _planetCardRow(text: data.distance, img: "assets/images/ic_distance.png"),
+                child: _planetCardRow(
+                    text: data.distance, img: "assets/images/ic_distance.png"),
               ),
               Container(width: 20.0),
               Expanded(
-                child: _planetCardRow(text: data.gravity, img: "assets/images/ic_gravity.png"),
+                child: _planetCardRow(
+                    text: data.gravity, img: "assets/images/ic_gravity.png"),
               ),
             ],
           )
@@ -109,10 +115,16 @@ class PlanetRow extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Container(
-      height: 120.0,
-      margin: const EdgeInsets.symmetric(vertical: 16.0, horizontal: 24.0),
-      child: planetFactory(planet),
+    return GestureDetector(
+      onTap: () => Navigator.of(context).push(PageRouteBuilder(
+        pageBuilder: (_, __, ___) => Detail(planet),
+        // transitionsBuilder: TransitionBuilder()
+      )),
+      child: Container(
+        height: 120.0,
+        margin: const EdgeInsets.symmetric(vertical: 16.0, horizontal: 24.0),
+        child: planetFactory(planet),
+      ),
     );
   }
 }

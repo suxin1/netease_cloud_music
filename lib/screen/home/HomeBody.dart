@@ -37,11 +37,33 @@ class _HomeBodyState extends State<HomeBody> {
 
   @override
   Widget build(BuildContext context) {
-    return Flexible(
-      child: ListView.builder(
-        itemCount: _planets.length,
-        itemBuilder: (_, int index) => _planets[index],
-      ),
+    return Expanded(
+      child: Container(
+          color: Color(0xFF736AB7),
+          child: CustomScrollView(
+            scrollDirection: Axis.vertical,
+            slivers: [
+              SliverPadding(
+                padding: EdgeInsets.symmetric(vertical: 16.0),
+                sliver: SliverFixedExtentList(
+                  itemExtent: 152.0,
+                  delegate: SliverChildBuilderDelegate(
+                    (_, index) => _planets[index],
+                    childCount: _planets.length,
+                  ),
+                ),
+              )
+            ],
+          )
+
+          // child: ListView.builder(
+          //   itemCount: _planets.length,
+          //   itemBuilder: (_, int index) => _planets[index],
+          //   itemExtent: 152.0,
+          //   padding: EdgeInsets.symmetric(vertical: 16.00),
+          // ),
+
+          ),
     );
   }
 }
