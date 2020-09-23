@@ -1,17 +1,47 @@
+import 'dart:convert';
+
 import "package:flutter/material.dart";
 import "package:NeteaseMusicMobileFake/screen/home/PlanetRow.dart";
 
-class HomeBody extends StatelessWidget {
+class HomeBody extends StatefulWidget {
+  const HomeBody({Key key}) : super(key: key);
+
+  @override
+  _HomeBodyState createState() => _HomeBodyState();
+}
+
+class _HomeBodyState extends State<HomeBody> {
+  final List<PlanetRow> _planets = [];
+
+  @override
+  void initState() {
+    Future<String> loadString =
+        DefaultAssetBundle.of(context).loadString("assets/json/mock.json");
+    loadString.then((String jsonString) {
+      dynamic data = json.decode(jsonString);
+      data.forEach((value) {
+        PlanetData planet = PlanetData(
+            id: value["id"],
+            name: value["name"],
+            location: value["location"],
+            distance: value["distance"],
+            gravity: value["gravity"],
+            description: value["description"],
+            image: value["image"]);
+        _planets.add(PlanetRow(planet: planet));
+      });
+      setState(() {});
+    });
+    super.initState();
+  }
+
   @override
   Widget build(BuildContext context) {
-    return Column(
-      children: [
-        PlanetRow(),
-        PlanetRow(),
-        PlanetRow(),
-        PlanetRow(),
-        PlanetRow()
-      ],
+    return Flexible(
+      child: ListView.builder(
+        itemCount: _planets.length,
+        itemBuilder: (_, int index) => _planets[index],
+      ),
     );
   }
 }
