@@ -1,6 +1,8 @@
 import 'dart:ui';
 
 import "package:flutter/material.dart";
+import "package:NeteaseMusicMobileFake/animation.dart";
+import "package:NeteaseMusicMobileFake/screen/tab/Tab.dart";
 
 class GradientAppBar extends StatelessWidget {
   final String title;
@@ -26,13 +28,16 @@ class GradientAppBar extends StatelessWidget {
             tileMode: TileMode.repeated),
       ),
       child: Center(
-        child: Text(
-          title,
-          style: TextStyle(
-            color: Colors.white,
-            fontFamily: "Poppins",
-            fontWeight: FontWeight.w600,
-            fontSize: 36.0,
+        child: GestureDetector(
+          onTap: () => Navigator.push(context, SlideUpTransition(MyStatelessWidget())),
+          child: Text(
+            title,
+            style: TextStyle(
+              color: Colors.white,
+              fontFamily: "Poppins",
+              fontWeight: FontWeight.w600,
+              fontSize: 36.0,
+            ),
           ),
         ),
       ),
