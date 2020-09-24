@@ -1,7 +1,7 @@
 import 'dart:convert';
 
 import "package:flutter/material.dart";
-import "package:NeteaseMusicMobileFake/screen/home/PlanetRow.dart";
+import "package:NeteaseMusicMobileFake/components/PlanetSummary.dart";
 
 class HomeBody extends StatefulWidget {
   const HomeBody({Key key}) : super(key: key);
@@ -11,7 +11,7 @@ class HomeBody extends StatefulWidget {
 }
 
 class _HomeBodyState extends State<HomeBody> {
-  final List<PlanetRow> _planets = [];
+  final List<PlanetSummary> _planets = [];
 
   @override
   void initState() {
@@ -27,8 +27,9 @@ class _HomeBodyState extends State<HomeBody> {
             distance: value["distance"],
             gravity: value["gravity"],
             description: value["description"],
-            image: value["image"]);
-        _planets.add(PlanetRow(planet: planet));
+            image: value["image"],
+            picture: value["picture"]);
+        _planets.add(PlanetSummary(planet));
       });
       setState(() {});
     });
