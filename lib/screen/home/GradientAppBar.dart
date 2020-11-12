@@ -3,6 +3,7 @@ import 'dart:ui';
 import "package:flutter/material.dart";
 import "package:NeteaseMusicMobileFake/animation.dart";
 import "package:NeteaseMusicMobileFake/screen/tab/Tab.dart";
+import "package:NeteaseMusicMobileFake/screen/login/Login.dart";
 
 class GradientAppBar extends StatelessWidget {
   final String title;
@@ -29,7 +30,8 @@ class GradientAppBar extends StatelessWidget {
       ),
       child: Center(
         child: GestureDetector(
-          onTap: () => Navigator.push(context, SlideUpTransition(MyStatelessWidget())),
+          onTap: () =>
+              Navigator.push(context, SlideUpTransition(LoginScreen())),
           child: Text(
             title,
             style: TextStyle(
