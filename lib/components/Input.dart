@@ -23,24 +23,28 @@ class Input extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      height: 80,
+      height: 70,
       child: TextFormField(
         controller: _controller,
         autofocus: true,
         obscureText: obscureText,
         decoration: InputDecoration(
           filled: true,
-          fillColor: Colors.white,
+          fillColor: Color(0xCCFFFFFF),
           hintText: hintText,
           border: OutlineInputBorder(
             borderRadius: BorderRadius.all(Radius.circular(50)),
             borderSide: BorderSide.none,
           ),
-          contentPadding: EdgeInsets.only(top: 0, bottom: 0),
-          prefixIcon: Icon(icon),
-          errorStyle: TextStyle(
-            color: Colors.white,
-          ),
+          contentPadding:
+              const EdgeInsets.symmetric(vertical: 0.0, horizontal: 16),
+          prefixIcon: icon != null
+              ? Icon(
+                  icon,
+                  size: 20,
+                )
+              : null,
+          errorStyle: TextStyle(color: Colors.white, height: 0.8, fontSize: 10),
         ),
         validator: validator,
       ),
