@@ -6,6 +6,7 @@ class Input extends StatelessWidget {
   final bool obscureText;
   final bool autofocus;
   final IconData icon;
+  final TextEditingController _controller;
 
   const Input({
     Key key,
@@ -17,8 +18,6 @@ class Input extends StatelessWidget {
     @required TextEditingController controller,
   })  : _controller = controller,
         super(key: key);
-
-  final TextEditingController _controller;
 
   @override
   Widget build(BuildContext context) {
