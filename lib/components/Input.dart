@@ -25,9 +25,15 @@ class Input extends StatelessWidget {
       height: 70,
       child: TextFormField(
         controller: _controller,
-        autofocus: true,
+        autofocus: autofocus,
         obscureText: obscureText,
+        // style: TextStyle(
+        //   height: 1,
+        //   fontSize: 16,
+        //   textBaseline: TextBaseline.ideographic,
+        // ),
         decoration: InputDecoration(
+          isDense: true,
           filled: true,
           fillColor: Color(0xCCFFFFFF),
           hintText: hintText,
@@ -36,15 +42,21 @@ class Input extends StatelessWidget {
             borderSide: BorderSide.none,
           ),
           contentPadding:
-              const EdgeInsets.symmetric(vertical: 0.0, horizontal: 16),
+              const EdgeInsets.symmetric(vertical: 12, horizontal: 10),
           prefixIcon: icon != null
               ? Icon(
                   icon,
                   size: 20,
                 )
               : null,
-          errorStyle: TextStyle(color: Colors.white, height: 0.8, fontSize: 10),
+          errorStyle: TextStyle(
+            color: Colors.white,
+            height: 1,
+            fontSize: 10,
+            textBaseline: TextBaseline.ideographic,
+          ),
         ),
+        textAlignVertical: TextAlignVertical.center,
         validator: validator,
       ),
     );

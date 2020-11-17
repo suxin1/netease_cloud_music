@@ -27,7 +27,7 @@ class _LoginFormState extends State<LoginForm> {
             Input(
               controller: _nameController,
               hintText: "手机号或邮箱",
-              autofocus: true,
+              autofocus: false,
               // icon: Icons.person,
               validator: (v) {
                 return v.trim().length > 0 ? null : "请输入手机号或邮箱";
