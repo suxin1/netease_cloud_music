@@ -53,7 +53,7 @@ class Counter extends StatelessWidget {
         return Row(
           children: [
             Text(
-              count.toString(),
+              "$count",
               style: Theme.of(context).textTheme.bodyText1,
             ),
             StoreConnector<CountState, VoidCallback>(
