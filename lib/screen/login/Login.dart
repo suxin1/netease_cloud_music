@@ -1,12 +1,12 @@
-import 'package:NeteaseMusicMobileFake/store/count.dart';
 import "package:flutter/material.dart";
-import 'package:flutter_redux/flutter_redux.dart';
 import "package:flutter_svg/flutter_svg.dart";
 
 // import "package:redux/redux.dart";
 import "package:NeteaseMusicMobileFake/theme/default.dart";
 import "package:NeteaseMusicMobileFake/screen/login/Form.dart";
-import "package:NeteaseMusicMobileFake/store/count.dart" as countStore;
+
+import 'package:NeteaseMusicMobileFake/service/service.dart';
+import 'package:NeteaseMusicMobileFake/service/counter.dart';
 
 class LoginScreen extends StatelessWidget {
   @override
@@ -32,7 +32,7 @@ class LoginScreen extends StatelessWidget {
               ),
             ),
             LoginForm(),
-            Counter()
+            CounterView(),
           ],
         ),
       ),
@@ -40,33 +40,25 @@ class LoginScreen extends StatelessWidget {
   }
 }
 
-class Counter extends StatelessWidget {
-  const Counter({
+class CounterView extends StatelessWidget {
+  final counterService = service.get<Counter>();
+
+  CounterView({
     Key key,
   }) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
-    return StoreConnector<CountState, int>(
-      converter: (store) => store.state.count,
-      builder: (context, count) {
-        return Row(
+    return StreamBuilder(
+      stream: counterService.stream$,
+      builder: (BuildContext context, AsyncSnapshot snap) {
+        return Column(
           children: [
-            Text(
-              "$count",
-              style: Theme.of(context).textTheme.bodyText1,
+            Text("${snap.data}"),
+            RaisedButton(
+              child: Text("plus"),
+              onPressed: () => counterService.increment(),
             ),
-            StoreConnector<CountState, VoidCallback>(
-              converter: (store) {
-                return () => store.dispatch(countStore.Action.increment);
-              },
-              builder: (context, callback) {
-                return RaisedButton(
-                  child: Text("plus"),
-                  onPressed: callback,
-                );
-              },
-            )
           ],
         );
       },
