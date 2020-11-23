@@ -9,8 +9,14 @@ part 'profile.g.dart';
 
 abstract class Profile implements Built<Profile, ProfileBuilder> {
   // Fields
+
+  @nullable
   int get accountStatus;
+
+  @nullable
   int get authStatus;
+
+  @nullable
   int get authority;
 
   @nullable
@@ -67,22 +73,42 @@ abstract class Profile implements Built<Profile, ProfileBuilder> {
   @nullable
   bool get followed;
 
+  @nullable
   int get followeds;
+
+  @nullable
   int get follows;
+
+  @nullable
   int get gender;
+
+  @nullable
   bool get mutual;
 
+  @nullable
   String get nickname;
+
+  @nullable
   int get playlistBeSubscribedCount;
+
+  @nullable
   int get playlistCount;
+
+  @nullable
   int get province;
 
   @nullable
   String get remarkName;
+
+  @nullable
   String get signature;
+
+  @nullable
   BigInt get userId;
 
+  @nullable
   int get userType;
+  @nullable
   int get vipType;
 
   Profile._();

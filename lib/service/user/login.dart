@@ -15,10 +15,13 @@ abstract class Login implements Built<Login, LoginBuilder> {
   Account get account;
   Profile get profile;
   BuiltList<Binding> get bindings;
-
+  @nullable
   int get code;
+  @nullable
   String get cookie;
+  @nullable
   int get loginType;
+  @nullable
   String get token;
 
   Login._();

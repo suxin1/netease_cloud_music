@@ -1,3 +1,4 @@
+import 'package:NeteaseMusicMobileFake/service/user/user.dart';
 import "package:flutter/material.dart";
 
 import "package:NeteaseMusicMobileFake/screen/home/Home.dart";
@@ -17,5 +18,10 @@ class MyApp extends StatelessWidget {
 
 void main() {
   initService();
+  final user = service.get<User>();
+  user.login(
+    "13540239926",
+    "ggg123456",
+  );
   runApp(MyApp());
 }

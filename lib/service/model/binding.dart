@@ -9,14 +9,23 @@ part 'binding.g.dart';
 
 abstract class Binding implements Built<Binding, BindingBuilder> {
   // Fields
+  @nullable
   DateTime get bindingTime;
+  @nullable
   BigInt get expiresIn;
+  @nullable
   bool get expired;
+  @nullable
   BigInt get id;
+  @nullable
   DateTime get refreshTime;
+  @nullable
   String get tokenJsonStr;
+  @nullable
   int get type;
+  @nullable
   String get url;
+  @nullable
   BigInt get userId;
 
   Binding._();
