@@ -24,11 +24,14 @@ dependencies:
   flutter:
     sdk: flutter
   flutter_svg: ^0.19.1
+
+  dio: ^3.0.10
+
   rxdart: ^0.24.1
   get_it: ^5.0.1
 
-  built_value: any
-  built_collection: any
+  built_value: ^7.1.0
+  built_collection: ^4.3.2
 
 
   # The following adds the Cupertino Icons font to your application.
@@ -39,8 +42,8 @@ dev_dependencies:
   flutter_test:
     sdk: flutter
     
-  build_runner: any
-  built_value_generator: any
+  build_runner: ^1.10.1
+  built_value_generator: ^7.1.0
 
 # For information on the generic Dart part of this file, see the
 # following page: https://dart.dev/tools/pub/pubspec
