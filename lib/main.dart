@@ -19,9 +19,12 @@ class MyApp extends StatelessWidget {
 void main() {
   initService();
   final user = service.get<User>();
-  user.login(
-    "13540239926",
-    "ggg123456",
-  );
+  Future.delayed(Duration(seconds: 1), () {
+    user.login(
+      "13540239926",
+      "ggg123456",
+    );
+  });
+
   runApp(MyApp());
 }

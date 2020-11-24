@@ -1,8 +1,10 @@
+import 'dart:convert';
+
 import 'package:dio/dio.dart';
 import "package:rxdart/rxdart.dart";
 
-import "package:NeteaseMusicMobileFake/service/user/login.dart";
-import "package:NeteaseMusicMobileFake/network/dio.dart";
+import 'package:NeteaseMusicMobileFake/service/model/account.dart';
+import 'package:NeteaseMusicMobileFake/network/httpRequest.dart';
 
 class AccountData {
   final String name;
@@ -11,17 +13,21 @@ class AccountData {
 }
 
 class User {
-  BehaviorSubject<Login> _counter = BehaviorSubject.seeded(Login());
+  BehaviorSubject<LoginResponse> _counter =
+      BehaviorSubject.seeded(LoginResponse());
 
   Stream get stream$ => _counter.stream;
 
-  Login get current => _counter.value;
+  LoginResponse get current => _counter.value;
 
   void login(String username, String passwd) async {
-    Future<Response> response = dio.get("/login/cellphone", queryParameters: {
-      "username": "13540239926",
+    Response response = await request.get("/login/cellphone", params: {
+      "phone": "13540239926",
       "password": "ggg123456",
     });
+    var data = response.toString();
+    var dataJson = json.decode(data);
+    LoginResponse user = LoginResponse.fromMap(response.data);
     print(response);
   }
 }

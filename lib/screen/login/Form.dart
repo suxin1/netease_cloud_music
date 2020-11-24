@@ -1,5 +1,6 @@
 import "package:flutter/material.dart";
 import "package:NeteaseMusicMobileFake/components/Input.dart";
+import "package:fluttertoast/fluttertoast.dart";
 
 class LoginForm extends StatefulWidget {
   const LoginForm({
@@ -60,6 +61,15 @@ class _LoginFormState extends State<LoginForm> {
                               color: Colors.white,
                               textColor: Colors.black,
                               onPressed: () {
+                                Fluttertoast.showToast(
+                                  msg: "你今天真好看!",
+                                  toastLength: Toast.LENGTH_SHORT,
+                                  gravity: ToastGravity.BOTTOM,
+                                  timeInSecForIosWeb: 1,
+                                  backgroundColor: Colors.red,
+                                  textColor: Colors.white,
+                                  fontSize: 16.0,
+                                );
                                 if ((_formKey.currentState as FormState)
                                     .validate()) {
                                   var uname = _nameController.value;
