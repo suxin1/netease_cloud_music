@@ -63,7 +63,7 @@ abstract class Profile implements Built<Profile, ProfileBuilder> {
   String get avatarDetail;
 
   @nullable
-  BigInt get avatarImgId;
+  int get avatarImgId;
 
   @nullable
   String get avatarImgIdStr;
@@ -75,7 +75,7 @@ abstract class Profile implements Built<Profile, ProfileBuilder> {
   String get avatarUrl;
 
   @nullable
-  BigInt get backgroundImgId;
+  int get backgroundImgId;
 
   @nullable
   String get backgroundImgIdStr;
@@ -84,7 +84,7 @@ abstract class Profile implements Built<Profile, ProfileBuilder> {
   String get backgroundUrl;
 
   @nullable
-  BigInt get birthday;
+  int get birthday;
 
   @nullable
   int get city;
@@ -144,7 +144,7 @@ abstract class Profile implements Built<Profile, ProfileBuilder> {
   String get signature;
 
   @nullable
-  BigInt get userId;
+  int get userId;
 
   @nullable
   int get userType;
@@ -161,11 +161,11 @@ abstract class Binding implements Built<Binding, BindingBuilder> {
   @nullable
   DateTime get bindingTime;
   @nullable
-  BigInt get expiresIn;
+  int get expiresIn;
   @nullable
   bool get expired;
   @nullable
-  BigInt get id;
+  int get id;
   @nullable
   DateTime get refreshTime;
   @nullable
@@ -175,7 +175,7 @@ abstract class Binding implements Built<Binding, BindingBuilder> {
   @nullable
   String get url;
   @nullable
-  BigInt get userId;
+  int get userId;
 
   Binding._();
 
