@@ -49,9 +49,6 @@ class HttpRequest {
         queryParameters: params,
         options: options,
       );
-      // await dio.get("https://wendux.github.io/xsddddd").catchError((error) {
-      //   print(error);
-      // });
       return response;
     } on DioError catch (e) {
       if (e.response != null) {

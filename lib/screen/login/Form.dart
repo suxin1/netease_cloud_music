@@ -22,7 +22,7 @@ class _LoginFormState extends State<LoginForm> {
       padding: EdgeInsets.all(40),
       child: Form(
         key: _formKey,
-        autovalidate: true,
+        autovalidateMode: AutovalidateMode.onUserInteraction,
         child: Column(
           children: <Widget>[
             Input(
@@ -61,10 +61,11 @@ class _LoginFormState extends State<LoginForm> {
                               color: Colors.white,
                               textColor: Colors.black,
                               onPressed: () {
+                                Fluttertoast.cancel();
                                 Fluttertoast.showToast(
                                   msg: "你今天真好看!",
                                   toastLength: Toast.LENGTH_SHORT,
-                                  gravity: ToastGravity.BOTTOM,
+                                  gravity: ToastGravity.TOP,
                                   timeInSecForIosWeb: 1,
                                   backgroundColor: Colors.red,
                                   textColor: Colors.white,

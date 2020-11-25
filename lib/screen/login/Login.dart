@@ -14,7 +14,7 @@ class LoginScreen extends StatelessWidget {
     return Scaffold(
       body: Container(
         constraints: BoxConstraints.expand(),
-        color: Color(colors["primary"]),
+        color: themeColors["primary"],
         child: ListView(
           children: [
             Container(
