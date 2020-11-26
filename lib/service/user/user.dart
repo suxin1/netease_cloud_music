@@ -1,7 +1,10 @@
 import 'dart:convert';
 
+import 'package:flutter/material.dart';
 import 'package:dio/dio.dart';
 import "package:rxdart/rxdart.dart";
+import "package:fluttertoast/fluttertoast.dart";
+
 import 'package:shared_preferences/shared_preferences.dart';
 import 'package:NeteaseCloudMusic/service/model/account.dart';
 import 'package:NeteaseCloudMusic/network/httpRequest.dart';
@@ -39,15 +42,27 @@ class User {
     }
   }
 
-  void login(String username, String passwd) async {
+  Future<Response<dynamic>> login(String username, String passwd) async {
     Response response = await request.get("/login/cellphone", params: {
       "phone": username,
       "password": passwd,
     });
     // var data = response.toString();
     // var dataJson = json.decode(data);
+    Fluttertoast.showToast(
+      msg: "你今天真好看!",
+      toastLength: Toast.LENGTH_SHORT,
+      gravity: ToastGravity.TOP,
+      timeInSecForIosWeb: 1,
+      backgroundColor: Colors.red,
+      textColor: Colors.white,
+      fontSize: 16.0,
+    );
+
     LoginResponse user = LoginResponse.fromMap(response.data);
     prefs.setString(ACCOUNT_DATA_KEY, response.toString());
+
     _account.add(user);
+    return response;
   }
 }

@@ -1,6 +1,8 @@
+import 'package:NeteaseCloudMusic/config/application.dart';
+import 'package:NeteaseCloudMusic/service/service.dart';
+import 'package:NeteaseCloudMusic/service/user/user.dart';
 import "package:flutter/material.dart";
 import "package:NeteaseCloudMusic/components/Input.dart";
-import "package:fluttertoast/fluttertoast.dart";
 
 class LoginForm extends StatefulWidget {
   const LoginForm({
@@ -15,6 +17,25 @@ class _LoginFormState extends State<LoginForm> {
   GlobalKey _formKey = new GlobalKey<FormState>();
   TextEditingController _nameController = new TextEditingController();
   TextEditingController _passwdController = new TextEditingController();
+
+  final userService = service.get<User>();
+
+  void handleSubmit(BuildContext context) {
+    if ((_formKey.currentState as FormState).validate()) {
+      Application.router.navigateTo(
+        context,
+        "/personal",
+      );
+      // var uname = _nameController.value as String;
+      // var passwd = _passwdController.value as String;
+      // userService.login(uname, passwd).then((value) {
+      //   Navigator.pushNamed(
+      //     context,
+      //     "/personal",
+      //   );
+      // });
+    }
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -44,50 +65,23 @@ class _LoginFormState extends State<LoginForm> {
               },
             ),
             Padding(
-                padding: EdgeInsets.symmetric(vertical: 6),
-                child: Row(
-                  children: [
-                    Expanded(
-                      child: Builder(
-                        builder: (context) {
-                          return Container(
-                            height: 40,
-                            child: RaisedButton(
-                              shape: RoundedRectangleBorder(
-                                borderRadius: BorderRadius.circular(28),
-                              ),
-                              padding: EdgeInsets.all(8),
-                              child: Text("登录"),
-                              color: Colors.white,
-                              textColor: Colors.black,
-                              onPressed: () {
-                                Fluttertoast.cancel();
-                                Fluttertoast.showToast(
-                                  msg: "你今天真好看!",
-                                  toastLength: Toast.LENGTH_SHORT,
-                                  gravity: ToastGravity.TOP,
-                                  timeInSecForIosWeb: 1,
-                                  backgroundColor: Colors.red,
-                                  textColor: Colors.white,
-                                  fontSize: 16.0,
-                                );
-                                if ((_formKey.currentState as FormState)
-                                    .validate()) {
-                                  var uname = _nameController.value;
-                                  var passwd = _passwdController.value;
-                                }
-                                if (Form.of(context).validate()) {
-                                  var uname = _nameController.value;
-                                  var passwd = _passwdController.value;
-                                }
-                              },
-                            ),
-                          );
-                        },
-                      ),
-                    )
-                  ],
-                ))
+              padding: EdgeInsets.symmetric(vertical: 6),
+              child: SizedBox(
+                height: 40,
+                child: RaisedButton(
+                  shape: RoundedRectangleBorder(
+                    borderRadius: BorderRadius.circular(28),
+                  ),
+                  padding: EdgeInsets.all(8),
+                  child: Text("登录"),
+                  color: Colors.white,
+                  textColor: Colors.black,
+                  onPressed: () {
+                    handleSubmit(context);
+                  },
+                ),
+              ),
+            )
           ],
         ),
       ),
