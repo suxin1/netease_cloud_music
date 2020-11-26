@@ -1,4 +1,4 @@
-# NeteaseMusicMobileFake
+# NeteaseCloudMusic
 
 A new Flutter project.
 

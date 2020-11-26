@@ -1,5 +1,5 @@
 import "package:flutter/material.dart";
-import "package:NeteaseMusicMobileFake/components/TextType.dart";
+import "package:NeteaseCloudMusic/components/TextType.dart";
 // Flutter code sample for TabController
 
 // This example shows how to listen to page updates in [TabBar] and [TabBarView]

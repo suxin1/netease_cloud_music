@@ -1,7 +1,7 @@
 import 'dart:convert';
 
 import "package:flutter/material.dart";
-import "package:NeteaseMusicMobileFake/components/PlanetSummary.dart";
+import "package:NeteaseCloudMusic/components/PlanetSummary.dart";
 
 class HomeBody extends StatefulWidget {
   const HomeBody({Key key}) : super(key: key);

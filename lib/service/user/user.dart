@@ -3,8 +3,8 @@ import 'dart:convert';
 import 'package:dio/dio.dart';
 import "package:rxdart/rxdart.dart";
 import 'package:shared_preferences/shared_preferences.dart';
-import 'package:NeteaseMusicMobileFake/service/model/account.dart';
-import 'package:NeteaseMusicMobileFake/network/httpRequest.dart';
+import 'package:NeteaseCloudMusic/service/model/account.dart';
+import 'package:NeteaseCloudMusic/network/httpRequest.dart';
 
 const ACCOUNT_DATA_KEY = 'account';
 

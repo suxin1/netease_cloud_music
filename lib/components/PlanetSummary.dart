@@ -1,7 +1,7 @@
 import "package:flutter/material.dart";
-import "package:NeteaseMusicMobileFake/screen/detail/Detail.dart";
-import "package:NeteaseMusicMobileFake/animation.dart";
-import "package:NeteaseMusicMobileFake/components/TextType.dart";
+import "package:NeteaseCloudMusic/screen/detail/Detail.dart";
+import "package:NeteaseCloudMusic/animation.dart";
+import "package:NeteaseCloudMusic/components/TextType.dart";
 
 /// Planet卡片展示
 class PlanetSummary extends StatelessWidget {
@@ -68,7 +68,7 @@ class PlanetSummary extends StatelessWidget {
               horizontal ? CrossAxisAlignment.start : CrossAxisAlignment.center,
           children: [
             Container(
-              height: horizontal?0.0:10.0,
+              height: horizontal ? 0.0 : 10.0,
             ),
             Text(data.name, style: headerTextStyle),
             Container(

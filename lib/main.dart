@@ -1,10 +1,9 @@
-import 'package:NeteaseMusicMobileFake/service/user/user.dart';
 import "package:flutter/material.dart";
-
-import "package:NeteaseMusicMobileFake/screen/home/Home.dart";
-import 'package:NeteaseMusicMobileFake/service/service.dart';
 import 'package:shared_preferences/shared_preferences.dart';
-import 'package:NeteaseMusicMobileFake/service/user/user.dart';
+
+import "package:NeteaseCloudMusic/screen/home/Home.dart";
+import 'package:NeteaseCloudMusic/service/service.dart';
+import 'package:NeteaseCloudMusic/service/user/user.dart';
 
 final GlobalKey<NavigatorState> navigatorKey = new GlobalKey<NavigatorState>();
 

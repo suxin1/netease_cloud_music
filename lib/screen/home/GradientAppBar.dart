@@ -1,8 +1,8 @@
 import 'dart:ui';
 
 import "package:flutter/material.dart";
-import "package:NeteaseMusicMobileFake/animation.dart";
-import "package:NeteaseMusicMobileFake/screen/login/Login.dart";
+import "package:NeteaseCloudMusic/animation.dart";
+import "package:NeteaseCloudMusic/screen/login/Login.dart";
 
 class GradientAppBar extends StatelessWidget {
   final String title;

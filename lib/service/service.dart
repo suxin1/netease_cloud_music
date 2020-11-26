@@ -1,7 +1,7 @@
 import "package:get_it/get_it.dart";
 
-import 'package:NeteaseMusicMobileFake/service/counter.dart';
-import 'package:NeteaseMusicMobileFake/service/user/user.dart';
+import 'package:NeteaseCloudMusic/service/counter.dart';
+import 'package:NeteaseCloudMusic/service/user/user.dart';
 
 GetIt service = new GetIt.asNewInstance();
 
