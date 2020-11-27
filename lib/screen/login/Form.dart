@@ -26,14 +26,14 @@ class _LoginFormState extends State<LoginForm> {
         context,
         "/personal",
       );
-      // var uname = _nameController.value as String;
-      // var passwd = _passwdController.value as String;
-      // userService.login(uname, passwd).then((value) {
-      //   Navigator.pushNamed(
-      //     context,
-      //     "/personal",
-      //   );
-      // });
+      var uname = _nameController.value.text;
+      var passwd = _passwdController.value.text;
+      userService.login(uname, passwd).then((value) {
+        // Navigator.pushNamed(
+        //   context,
+        //   "/personal",
+        // );
+      });
     }
   }
 
@@ -64,25 +64,30 @@ class _LoginFormState extends State<LoginForm> {
                 return v.trim().length >= 6 ? null : "请输入密码";
               },
             ),
-            Padding(
-              padding: EdgeInsets.symmetric(vertical: 6),
-              child: SizedBox(
-                height: 40,
-                child: RaisedButton(
-                  shape: RoundedRectangleBorder(
-                    borderRadius: BorderRadius.circular(28),
-                  ),
-                  padding: EdgeInsets.all(8),
-                  child: Text("登录"),
-                  color: Colors.white,
-                  textColor: Colors.black,
-                  onPressed: () {
-                    handleSubmit(context);
-                  },
-                ),
-              ),
-            )
+            _submitButton(),
           ],
+        ),
+      ),
+    );
+  }
+
+  Widget _submitButton() {
+    return Padding(
+      padding: EdgeInsets.symmetric(vertical: 6),
+      child: SizedBox(
+        height: 40,
+        width: double.infinity,
+        child: RaisedButton(
+          shape: RoundedRectangleBorder(
+            borderRadius: BorderRadius.circular(28),
+          ),
+          padding: EdgeInsets.all(8),
+          child: Text("登录"),
+          color: Colors.white,
+          textColor: Colors.black,
+          onPressed: () {
+            handleSubmit(context);
+          },
         ),
       ),
     );

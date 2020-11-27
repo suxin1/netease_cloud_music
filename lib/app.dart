@@ -27,7 +27,7 @@ class _AppComponentState extends State<AppComponent> {
   Widget build(BuildContext context) {
     return MaterialApp(
       title: "planets",
-      home: HomeScreen(),
+      // home: HomeScreen(),
       onGenerateRoute: Application.router.generator,
       debugShowCheckedModeBanner: false,
       // navigatorKey: navigatorKey,
