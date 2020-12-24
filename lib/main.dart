@@ -1,4 +1,3 @@
-
 import "package:flutter/material.dart";
 import 'package:shared_preferences/shared_preferences.dart';
 
@@ -25,7 +24,7 @@ void runAppAsync() async {
   String accountStr = prefs.getString(ACCOUNT_DATA_KEY);
   if (accountStr != null) {
     runApp(
-      AppComponent(initialPage: '/personal'),
+      AppComponent(initialPage: '/home'),
     );
   } else {
     runApp(AppComponent(

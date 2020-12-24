@@ -22,17 +22,17 @@ class _LoginFormState extends State<LoginForm> {
 
   void handleSubmit(BuildContext context) {
     if ((_formKey.currentState as FormState).validate()) {
-      Application.router.navigateTo(
-        context,
-        "/personal",
-      );
+      // Application.router.navigateTo(
+      //   context,
+      //   "/personal",
+      // );
       var uname = _nameController.value.text;
       var passwd = _passwdController.value.text;
       userService.login(uname, passwd).then((value) {
-        // Navigator.pushNamed(
-        //   context,
-        //   "/personal",
-        // );
+        Navigator.pushNamed(
+          context,
+          "/home",
+        );
       });
     }
   }

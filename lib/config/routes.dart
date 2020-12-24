@@ -5,7 +5,7 @@ import 'package:flutter/material.dart';
 class Routes {
   static String root = "/";
   static String login = "/login";
-  static String personal = "/personal";
+  static String personal = "/home";
 
   static void configureRoutes(FluroRouter router) {
     router.notFoundHandler = Handler(handlerFunc: (
@@ -15,8 +15,8 @@ class Routes {
       print("Route not found!");
     });
 
-    router.define(root, handler: personalHandler);
+    router.define(root, handler: homeHandler);
     router.define(login, handler: loginHandler);
-    router.define(personal, handler: personalHandler);
+    router.define(personal, handler: homeHandler);
   }
 }
