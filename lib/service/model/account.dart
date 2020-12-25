@@ -105,7 +105,7 @@ abstract class Profile implements Built<Profile, ProfileBuilder> {
   int get eventCount;
 
   @nullable
-  String get expertTags;
+  BuiltList<String> get expertTags;
 
 // @nullable
 // Experts get experts;

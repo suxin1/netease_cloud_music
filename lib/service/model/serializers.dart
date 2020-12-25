@@ -6,6 +6,8 @@ import "package:built_collection/built_collection.dart";
 import 'package:built_value/standard_json_plugin.dart';
 import "package:built_value/serializer.dart";
 import "package:NeteaseCloudMusic/service/model/account.dart";
+import "package:NeteaseCloudMusic/service/model/playlist.dart";
+
 import "package:NeteaseCloudMusic/service/plugin/iso_8601_date_time_serializer.dart";
 
 part 'serializers.g.dart';
@@ -14,6 +16,8 @@ part 'serializers.g.dart';
   Account,
   Profile,
   Binding,
+  Playlist,
+  PlaylistResponse,
   LoginResponse,
 ])
 final Serializers serializers = (_$serializers.toBuilder()

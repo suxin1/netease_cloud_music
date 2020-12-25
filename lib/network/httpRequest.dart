@@ -63,6 +63,15 @@ class HttpRequest {
         );
       } else {
         print(e.message);
+        Fluttertoast.showToast(
+          msg: "网络错误",
+          toastLength: Toast.LENGTH_SHORT,
+          gravity: ToastGravity.BOTTOM,
+          timeInSecForIosWeb: 100,
+          backgroundColor: Colors.red,
+          textColor: Colors.white,
+          fontSize: 16.0,
+        );
       }
       return Future.error(e);
     } catch (error) {
