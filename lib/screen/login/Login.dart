@@ -32,7 +32,7 @@ class LoginScreen extends StatelessWidget {
               ),
             ),
             LoginForm(),
-            CounterView(),
+            // CounterView(),
           ],
         ),
       ),

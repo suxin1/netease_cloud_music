@@ -16,17 +16,26 @@ class HomeScreen extends StatelessWidget {
   }
 }
 
-class HomeBody extends StatelessWidget {
+class HomeBody extends StatefulWidget {
+  const HomeBody({Key key}) : super(key: key);
+
+  @override
+  _HomeBodyState createState() => _HomeBodyState();
+}
+
+class _HomeBodyState extends State<HomeBody> {
   final userService = service.get<User>();
   final playlistService = service.get<Playlist>();
 
-  Stream stream;
-  HomeBody() {
-    print(userService.current);
+  @override
+  void initState() {
     if (userService.current.account != null) {
       playlistService.get(userService.current.account.id);
     }
-    stream = Rx.merge([userService.stream$, playlistService.stream$]);
+  }
+
+  Widget buildCard(var data)  {
+    return Text(data.name);
   }
 
   @override
@@ -35,14 +44,27 @@ class HomeBody extends StatelessWidget {
         stream: playlistService.stream$,
         // stream: stream,
         builder: (context, snapshot) {
-          String name = "";
+          var list = [];
           if (snapshot.data != null) {
             print(snapshot.data);
+            list = snapshot.data.playlist;
           }
           return Container(
-            padding: EdgeInsets.only(top: MediaQuery.of(context).padding.top),
-            child: Text("这是首页"),
-          );
+              padding: EdgeInsets.only(top: MediaQuery.of(context).padding.top),
+              child: CustomScrollView(
+                slivers: [
+                  SliverPadding(
+                    padding: EdgeInsets.symmetric(vertical: 16.0),
+                    sliver: SliverFixedExtentList(
+                      itemExtent: 152.0,
+                        delegate: SliverChildBuilderDelegate(
+                            (_, index) => buildCard(list[index]),
+                          childCount: list.length,
+                        ),
+                    ),
+                  ),
+                ],
+              ));
         });
   }
 }
