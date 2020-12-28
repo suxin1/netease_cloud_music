@@ -42,6 +42,55 @@ class _HomeBodyState extends State<HomeBody> {
     return Text(data.name);
   }
 
+  Widget card(Playlist data) {
+    return Container(
+      height: 80,
+      margin: EdgeInsets.symmetric(horizontal: 10),
+      child: Row(
+        crossAxisAlignment: CrossAxisAlignment.center,
+        children: [
+          Stack(
+            alignment: FractionalOffset(.5, -0.5),
+            children: [
+              Container(
+                height: 50,
+                width: 50,
+                decoration: BoxDecoration(
+                  color: Color(0xFFEEEEEE),
+                  borderRadius: BorderRadius.circular(8.0)
+                ),
+              ),
+              Container(
+                height: 60,
+                width: 60,
+                child: ClipRRect(
+                  borderRadius: BorderRadius.circular(8.0),
+                  child: Image.network(data.coverImgUrl),
+                ),
+              ),
+            ],
+          ),
+          Container(
+            margin: EdgeInsets.only(left: 10),
+            child: Column(
+              mainAxisAlignment: MainAxisAlignment.center,
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                Text(data.name),
+                Row(
+                  children: [
+                    Text("${data.trackCount}", style: TextStyle(color: Colors.grey, fontSize: 12)),
+                    Text(",by ${data.creator.nickname}",style: TextStyle(color: Colors.grey, fontSize: 12)),
+                  ],
+                ),
+              ],
+            ),
+          ),
+        ],
+      ),
+    );
+  }
+
   @override
   Widget build(BuildContext context) {
     return StreamBuilder(
@@ -55,20 +104,33 @@ class _HomeBodyState extends State<HomeBody> {
           }
           return Container(
               padding: EdgeInsets.only(top: MediaQuery.of(context).padding.top),
-              child: CustomScrollView(
-                slivers: [
-                  SliverPadding(
-                    padding: EdgeInsets.symmetric(vertical: 16.0),
-                    sliver: SliverFixedExtentList(
-                      itemExtent: 152.0,
-                      delegate: SliverChildBuilderDelegate(
-                        (_, index) => buildCard(list[index]),
-                        childCount: list.length,
-                      ),
-                    ),
-                  ),
-                ],
-              ));
+              child: listView(list));
         });
+  }
+
+  Widget listView(BuiltList<Playlist> list) {
+    return ListView.builder(
+      itemCount: list.length,
+      itemBuilder: (_, int index) => card(list[index]),
+    );
+  }
+
+  Widget scrollView(BuiltList<Playlist> list) {
+    return Container(
+      child: CustomScrollView(
+        slivers: [
+          SliverPadding(
+            padding: EdgeInsets.symmetric(vertical: 16.0),
+            sliver: SliverFixedExtentList(
+              // itemExtent: 152.0,
+              delegate: SliverChildBuilderDelegate(
+                (_, index) => buildCard(list[index]),
+                childCount: list.length,
+              ),
+            ),
+          ),
+        ],
+      ),
+    );
   }
 }
