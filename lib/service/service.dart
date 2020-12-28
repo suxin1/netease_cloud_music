@@ -9,5 +9,5 @@ GetIt service = new GetIt.asNewInstance();
 void initService() {
   service.registerSingleton<Counter>(Counter());
   service.registerSingleton<User>(User());
-  service.registerSingleton<Playlist>(Playlist());
+  service.registerSingleton<PlaylistService>(PlaylistService());
 }

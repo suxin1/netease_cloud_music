@@ -1,9 +1,12 @@
 import "package:flutter/material.dart";
 
 import "package:rxdart/rxdart.dart";
+import "package:built_collection/built_collection.dart" show BuiltList;
+
 import "package:NeteaseCloudMusic/service/service.dart";
 import "package:NeteaseCloudMusic/service/user/user.dart";
 import "package:NeteaseCloudMusic/service/playlist/playlist.dart";
+import "package:NeteaseCloudMusic/service/playlist/model.dart";
 // import "package:NeteaseCloudMusic/service/model/playlist.dart";
 
 class HomeScreen extends StatelessWidget {
@@ -25,16 +28,17 @@ class HomeBody extends StatefulWidget {
 
 class _HomeBodyState extends State<HomeBody> {
   final userService = service.get<User>();
-  final playlistService = service.get<Playlist>();
+  final playlistService = service.get<PlaylistService>();
 
   @override
   void initState() {
-    if (userService.current.account != null) {
+    super.initState();
+    if (userService.current.account.id != null) {
       playlistService.get(userService.current.account.id);
     }
   }
 
-  Widget buildCard(var data)  {
+  Widget buildCard(var data) {
     return Text(data.name);
   }
 
@@ -44,10 +48,10 @@ class _HomeBodyState extends State<HomeBody> {
         stream: playlistService.stream$,
         // stream: stream,
         builder: (context, snapshot) {
-          var list = [];
+          BuiltList<Playlist> list = BuiltList<Playlist>();
           if (snapshot.data != null) {
             print(snapshot.data);
-            list = snapshot.data.playlist;
+            list = snapshot.data;
           }
           return Container(
               padding: EdgeInsets.only(top: MediaQuery.of(context).padding.top),
@@ -57,10 +61,10 @@ class _HomeBodyState extends State<HomeBody> {
                     padding: EdgeInsets.symmetric(vertical: 16.0),
                     sliver: SliverFixedExtentList(
                       itemExtent: 152.0,
-                        delegate: SliverChildBuilderDelegate(
-                            (_, index) => buildCard(list[index]),
-                          childCount: list.length,
-                        ),
+                      delegate: SliverChildBuilderDelegate(
+                        (_, index) => buildCard(list[index]),
+                        childCount: list.length,
+                      ),
                     ),
                   ),
                 ],

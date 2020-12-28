@@ -5,10 +5,10 @@ import "package:built_value/built_value.dart";
 import 'package:built_value/serializer.dart';
 import 'package:built_collection/built_collection.dart';
 
-import 'package:NeteaseCloudMusic/service/model/serializers.dart';
-import 'package:NeteaseCloudMusic/service/model/account.dart';
+import 'package:NeteaseCloudMusic/service/serializers.dart';
+import 'package:NeteaseCloudMusic/service/user/model.dart';
 
-part 'playlist.g.dart';
+part 'model.g.dart';
 
 // abstract class ResponseBase {
 //   int get code;
@@ -67,8 +67,7 @@ abstract class Playlist implements Built<Playlist, PlaylistBuilder> {
 }
 
 // 歌单相应对象
-abstract class PlaylistResponse
-    implements Built<PlaylistResponse, PlaylistResponseBuilder> {
+abstract class Playlists implements Built<Playlists, PlaylistsBuilder> {
   // Fields
   @nullable
   int get code;
@@ -77,25 +76,22 @@ abstract class PlaylistResponse
 
   BuiltList<Playlist> get playlist;
 
-  PlaylistResponse._();
+  Playlists._();
 
-  factory PlaylistResponse([void Function(PlaylistResponseBuilder) updates]) =
-      _$PlaylistResponse;
+  factory Playlists([void Function(PlaylistsBuilder) updates]) = _$Playlists;
 
-  factory PlaylistResponse.fromMap(Map<String, dynamic> data) {
-    return serializers.deserializeWith(PlaylistResponse.serializer, data);
+  factory Playlists.fromMap(Map<String, dynamic> data) {
+    return serializers.deserializeWith(Playlists.serializer, data);
   }
 
   String toJson() {
-    return json
-        .encode(serializers.serializeWith(PlaylistResponse.serializer, this));
+    return json.encode(serializers.serializeWith(Playlists.serializer, this));
   }
 
-  static PlaylistResponse fromJson(String jsonString) {
+  static Playlists fromJson(String jsonString) {
     return serializers.deserializeWith(
-        PlaylistResponse.serializer, json.decode(jsonString));
+        Playlists.serializer, json.decode(jsonString));
   }
 
-  static Serializer<PlaylistResponse> get serializer =>
-      _$playlistResponseSerializer;
+  static Serializer<Playlists> get serializer => _$playlistsSerializer;
 }

@@ -1,30 +1,28 @@
 import "dart:convert";
 
-import 'package:NeteaseCloudMusic/network/httpRequest.dart';
-import 'package:NeteaseCloudMusic/service/model/playlist.dart';
-// import "package:flutter/material.dart";
 import "package:dio/dio.dart";
 import "package:rxdart/rxdart.dart";
-// import "package:fluttertoast/fluttertoast.dart";
+import "package:built_collection/built_collection.dart";
 
-// import "package:NeteaseCloudMusic/service/user/user.dart";
+import 'package:NeteaseCloudMusic/network/httpRequest.dart';
+import 'package:NeteaseCloudMusic/service/playlist/model.dart';
 
-class Playlist {
-  BehaviorSubject<PlaylistResponse> _playlists =
-      BehaviorSubject.seeded(PlaylistResponse());
+class PlaylistService {
+  BehaviorSubject<BuiltList<Playlist>> _playlists =
+      BehaviorSubject.seeded(BuiltList<Playlist>());
   Stream get stream$ => _playlists.stream;
 
-  PlaylistResponse get current => _playlists.value;
+  BuiltList<Playlist> get current => _playlists.value;
 
-  Playlist();
+  PlaylistService();
 
   Future<Response<dynamic>> get(int uid) async {
     Response response = await request.get("/user/playlist", params: {
       "uid": uid,
     });
-    PlaylistResponse playlist = PlaylistResponse.fromMap(response.data);
+    Playlists playlists = Playlists.fromMap(response.data);
 
-    _playlists.add(playlist);
+    _playlists.add(playlists.playlist);
 
     return response;
   }

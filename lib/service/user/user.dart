@@ -6,7 +6,7 @@ import "package:rxdart/rxdart.dart";
 import "package:fluttertoast/fluttertoast.dart";
 
 import 'package:shared_preferences/shared_preferences.dart';
-import 'package:NeteaseCloudMusic/service/model/account.dart';
+import 'package:NeteaseCloudMusic/service/user/model.dart';
 import 'package:NeteaseCloudMusic/network/httpRequest.dart';
 
 const ACCOUNT_DATA_KEY = 'account';

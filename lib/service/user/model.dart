@@ -5,9 +5,9 @@ import "package:built_value/built_value.dart";
 import 'package:built_value/serializer.dart';
 import 'package:built_collection/built_collection.dart';
 
-import 'package:NeteaseCloudMusic/service/model/serializers.dart';
+import 'package:NeteaseCloudMusic/service/serializers.dart';
 
-part 'account.g.dart';
+part 'model.g.dart';
 
 abstract class Account implements Built<Account, AccountBuilder> {
   // Fields
