@@ -28,10 +28,15 @@ class PlaylistCard extends StatelessWidget {
         mainAxisAlignment: MainAxisAlignment.center,
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
-          Text(
-            playlist.name,
-            overflow: TextOverflow.ellipsis,
-            softWrap: false,
+          ConstrainedBox(
+            constraints: BoxConstraints(
+              maxWidth: 200
+            ),
+            child: Text(
+              playlist.name,
+              overflow: TextOverflow.ellipsis,
+              style: TextStyle(fontSize: 14),
+            ),
           ),
           SizedBox(height: 10),
           Row(

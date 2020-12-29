@@ -3,8 +3,14 @@ import "package:flutter/material.dart";
 class Card extends StatelessWidget {
   final Widget child;
   final String title;
+  final TextStyle textStyle;
 
-  Card({Key key, this.child, this.title}) : super(key: key);
+  Card({
+    Key key,
+    this.child,
+    this.title,
+    this.textStyle,
+  }) : super(key: key);
 
   @override
   Widget build(BuildContext context) {

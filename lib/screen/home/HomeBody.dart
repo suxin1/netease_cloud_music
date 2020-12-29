@@ -2,6 +2,7 @@ import "package:flutter/material.dart" hide Card;
 
 import "package:rxdart/rxdart.dart";
 import "package:built_collection/built_collection.dart" show BuiltList;
+import "package:NeteaseCloudMusic/patched/scrollBehavior.dart";
 
 // components
 import "package:NeteaseCloudMusic/components/PlaylistCard.dart";
@@ -53,19 +54,50 @@ class _HomeBodyState extends State<HomeBody> {
 
   Widget listView(BuiltList<Playlist> list) {
     print("build");
-    return ListView(
-      children: [
-        Card(
-          title: "我的歌单",
-          child: ListView.builder(
-            physics: NeverScrollableScrollPhysics(),
-            scrollDirection: Axis.vertical,
-            shrinkWrap: true,
-            itemCount: list.length,
-            itemBuilder: (_, int index) => PlaylistCard(list[index]),
-          ),
-        ),
-      ],
+    Playlist liked;
+    List<Playlist> createdList = List<Playlist>();
+    List<Playlist> collectedList = List<Playlist>();
+    for (Playlist item in list) {
+      if(item.creator.userId == userService.current.profile.userId) {
+        if(item.specialType == 5) liked = item;
+        if(item.specialType == 0) createdList.add(item);
+      }
+      else collectedList.add(item);
+    }
+    return ScrollConfiguration(
+      behavior: AppScrollBehavior(),
+      child: ListView(
+        children: [
+          _created(createdList),
+          _collected(collectedList),
+        ],
+      ),
+    );
+  }
+
+  Widget _created(List<Playlist> list) {
+    return Card(
+      title: "创建歌单（${list.length}个）",
+
+      child: ListView.builder(
+        physics: NeverScrollableScrollPhysics(),
+        scrollDirection: Axis.vertical,
+        shrinkWrap: true,
+        itemCount: list.length,
+        itemBuilder: (_, int index) => PlaylistCard(list[index]),
+      ),
+    );
+  }
+
+  Widget _collected(List<Playlist> list) {
+    return Card(
+      title: "收藏歌单（${list.length}个）",
+      child: ListView.builder(
+        physics: NeverScrollableScrollPhysics(),
+        scrollDirection: Axis.vertical,
+        shrinkWrap: true,
+        itemCount: list.length,
+        itemBuilder: (_, int index) => PlaylistCard(list[index]),)
     );
   }
 
