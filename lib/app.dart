@@ -26,7 +26,7 @@ class _AppComponentState extends State<AppComponent> {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      title: "planets",
+      title: "网抑云",
       // home: HomeScreen(),
       onGenerateRoute: Application.router.generator,
       debugShowCheckedModeBanner: false,
