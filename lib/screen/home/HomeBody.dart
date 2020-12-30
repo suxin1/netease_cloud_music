@@ -58,11 +58,11 @@ class _HomeBodyState extends State<HomeBody> {
     List<Playlist> createdList = List<Playlist>();
     List<Playlist> collectedList = List<Playlist>();
     for (Playlist item in list) {
-      if(item.creator.userId == userService.current.profile.userId) {
-        if(item.specialType == 5) liked = item;
-        if(item.specialType == 0) createdList.add(item);
-      }
-      else collectedList.add(item);
+      if (item.creator.userId == userService.current.profile.userId) {
+        if (item.specialType == 5) liked = item;
+        if (item.specialType == 0) createdList.add(item);
+      } else
+        collectedList.add(item);
     }
     return ScrollConfiguration(
       behavior: AppScrollBehavior(),
@@ -78,27 +78,33 @@ class _HomeBodyState extends State<HomeBody> {
   Widget _created(List<Playlist> list) {
     return Card(
       title: "创建歌单（${list.length}个）",
-
       child: ListView.builder(
         physics: NeverScrollableScrollPhysics(),
         scrollDirection: Axis.vertical,
         shrinkWrap: true,
         itemCount: list.length,
-        itemBuilder: (_, int index) => PlaylistCard(list[index]),
+        itemBuilder: (_, int index) => PlaylistCard(
+          list[index],
+          onTap: () => {print("toped")},
+        ),
       ),
     );
   }
 
   Widget _collected(List<Playlist> list) {
     return Card(
-      title: "收藏歌单（${list.length}个）",
-      child: ListView.builder(
-        physics: NeverScrollableScrollPhysics(),
-        scrollDirection: Axis.vertical,
-        shrinkWrap: true,
-        itemCount: list.length,
-        itemBuilder: (_, int index) => PlaylistCard(list[index]),)
-    );
+        title: "收藏歌单（${list.length}个）",
+        child: ListView.builder(
+          physics: NeverScrollableScrollPhysics(),
+          scrollDirection: Axis.vertical,
+          shrinkWrap: true,
+          itemCount: list.length,
+          itemBuilder: (_, int index) => PlaylistCard(
+            list[index],
+            onTap: () => {print("tapped")},
+            onMorePressed: () => {print("more pressed")},
+          ),
+        ));
   }
 
   Widget scrollView(BuiltList<Playlist> list) {

@@ -1,4 +1,5 @@
 import "package:flutter/material.dart";
+import 'package:NeteaseCloudMusic/theme/TextType.dart';
 
 class Card extends StatelessWidget {
   final Widget child;
@@ -15,7 +16,7 @@ class Card extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      margin: EdgeInsets.all(16),
+      margin: EdgeInsets.only(left: 16.0, right: 16.0, bottom: 10.0),
       decoration: BoxDecoration(
         borderRadius: BorderRadius.circular(16),
         color: Colors.white,
@@ -38,21 +39,33 @@ class Card extends StatelessWidget {
 
   Widget _header() {
     return Container(
-      height: 40,
+      height: 44,
+      padding: EdgeInsets.only(
+        left: 16.0, right: 8.0,
+      ),
+      // color: Colors.red,
       child: Row(
         children: [
           if (title != null)
             Container(
-              margin: EdgeInsets.all(10),
               child: Text(
                 title,
-                style: TextStyle(
-                  color: Color(0xFFAAAAAA),
-                ),
+                style: TextType.smallSecondary,
               ),
             ),
           Spacer(),
-          Text("icon"),
+          IconButton(
+            constraints: BoxConstraints(
+              maxHeight: 30,
+              minHeight: 30,
+              minWidth: 30,
+              maxWidth: 30,
+            ),
+            padding: EdgeInsets.all(0),
+            icon: Icon(Icons.more_vert),
+            iconSize: 20,
+            onPressed: null,
+          ),
         ],
       ),
     );
@@ -60,7 +73,7 @@ class Card extends StatelessWidget {
 
   Widget _body() {
     return Container(
-      padding: EdgeInsets.all(8),
+      // padding: EdgeInsets.all(8),
       child: child,
     );
   }

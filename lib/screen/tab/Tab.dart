@@ -1,5 +1,5 @@
 import "package:flutter/material.dart";
-import "package:NeteaseCloudMusic/components/TextType.dart";
+import 'package:NeteaseCloudMusic/theme/TextType.dart';
 // Flutter code sample for TabController
 
 // This example shows how to listen to page updates in [TabBar] and [TabBarView]
@@ -9,19 +9,19 @@ final List<Tab> tabs = <Tab>[
   Tab(
     child: Text(
       "Zeroth",
-      style: TextType.commonTextStyle.copyWith(color: Colors.black87),
+      style: TextType.common.copyWith(color: Colors.black87),
     ),
   ),
   Tab(
     child: Text(
       "First",
-      style: TextType.commonTextStyle.copyWith(color: Colors.black87),
+      style: TextType.common.copyWith(color: Colors.black87),
     ),
   ),
   Tab(
     child: Text(
       "Second",
-      style: TextType.commonTextStyle.copyWith(color: Colors.black87),
+      style: TextType.common.copyWith(color: Colors.black87),
     ),
   ),
 ];

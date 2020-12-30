@@ -1,7 +1,7 @@
 import 'package:flutter/cupertino.dart';
 import "package:flutter/material.dart";
 import "package:NeteaseCloudMusic/components/PlanetSummary.dart";
-import "package:NeteaseCloudMusic/components/TextType.dart";
+import 'package:NeteaseCloudMusic/theme/TextType.dart';
 import "package:NeteaseCloudMusic/components/Separator.dart";
 
 class Detail extends StatelessWidget {
@@ -66,7 +66,7 @@ class Detail extends StatelessWidget {
                 Separator(),
                 Text(
                   paramData.description,
-                  style: TextType.commonTextStyle,
+                  style: TextType.common,
                   textAlign: TextAlign.justify,
                 )
               ],
