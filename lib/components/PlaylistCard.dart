@@ -1,6 +1,7 @@
 import "package:flutter/material.dart";
 import "package:NeteaseCloudMusic/service/playlist/model.dart";
 import 'package:NeteaseCloudMusic/theme/TextType.dart';
+import "package:NeteaseCloudMusic/patched/noSplash.dart";
 
 class PlaylistCard extends StatelessWidget {
   final Playlist playlist;
@@ -11,20 +12,23 @@ class PlaylistCard extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return InkWell(
-      onTap: onTap,
-      child: Container(
-        // color: Colors.blue,
-        padding: EdgeInsets.only(left: 16, top: 8.0, right: 8.0, bottom: 8.0),
-        // height: 80,
-        child: Row(
-          crossAxisAlignment: CrossAxisAlignment.center,
-          children: [
-            _thumbnail(),
-            _description(),
-            Spacer(),
-            _button(),
-          ],
+    return Material(
+      child: InkWell(
+        splashFactory: NormalInkFactory(),
+        onTap: onTap,
+        child: Container(
+          // color: Colors.blue,
+          padding: EdgeInsets.only(left: 16, top: 8.0, right: 8.0, bottom: 8.0),
+          // height: 80,
+          child: Row(
+            crossAxisAlignment: CrossAxisAlignment.center,
+            children: [
+              _thumbnail(),
+              _description(),
+              Spacer(),
+              _button(),
+            ],
+          ),
         ),
       ),
     );
