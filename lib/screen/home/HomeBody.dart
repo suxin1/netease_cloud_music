@@ -85,7 +85,7 @@ class _HomeBodyState extends State<HomeBody> {
         itemCount: list.length,
         itemBuilder: (_, int index) => PlaylistCard(
           list[index],
-          onTap: () => {print("toped")},
+          onTap: () => {print("topped")},
         ),
       ),
     );

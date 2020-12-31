@@ -7,12 +7,24 @@ import 'package:built_collection/built_collection.dart';
 
 import 'package:NeteaseCloudMusic/service/serializers.dart';
 import 'package:NeteaseCloudMusic/service/user/model.dart';
+import 'package:NeteaseCloudMusic/service/artist/model.dart';
 
 part 'model.g.dart';
 
 // abstract class ResponseBase {
 //   int get code;
 // }
+abstract class Track implements Built<Track, TrackBuilder> {
+  String get name;
+  int get id;
+  int get pst;
+  int get t;
+  BuiltList<Artist> get ar;
+  
+  Track._();
+  factory Track([void Function(TrackBuilder) updates]) = _$Track;
+  static Serializer<Track> get serializer => _$trackSerializer;
+}
 
 abstract class Playlist implements Built<Playlist, PlaylistBuilder> {
   // Fields

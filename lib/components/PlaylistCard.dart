@@ -2,6 +2,7 @@ import "package:flutter/material.dart";
 import "package:NeteaseCloudMusic/service/playlist/model.dart";
 import 'package:NeteaseCloudMusic/theme/TextType.dart';
 import "package:NeteaseCloudMusic/patched/noSplash.dart";
+import "package:NeteaseCloudMusic/components/Ink.dart";
 
 class PlaylistCard extends StatelessWidget {
   final Playlist playlist;
@@ -12,40 +13,42 @@ class PlaylistCard extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Material(
-      child: InkWell(
-        splashFactory: NormalInkFactory(),
-        onTap: onTap,
-        child: Container(
-          // color: Colors.blue,
-          padding: EdgeInsets.only(left: 16, top: 8.0, right: 8.0, bottom: 8.0),
-          // height: 80,
-          child: Row(
-            crossAxisAlignment: CrossAxisAlignment.center,
-            children: [
-              _thumbnail(),
-              _description(),
-              Spacer(),
-              _button(),
-            ],
-          ),
+    return TapResponse(
+      onTap: onTap,
+      child: Container(
+        // color: Colors.blue,
+        padding: EdgeInsets.only(left: 16, top: 8.0, right: 8.0, bottom: 8.0),
+        // height: 80,
+        child: Row(
+          crossAxisAlignment: CrossAxisAlignment.center,
+          children: [
+            _thumbnail(),
+            _description(),
+            Spacer(),
+            _button(),
+          ],
         ),
       ),
     );
   }
 
   Widget _button() {
-    return IconButton(
-      constraints: BoxConstraints(
-        maxHeight: 30,
-        minHeight: 30,
-        minWidth: 30,
-        maxWidth: 30,
+    return TapResponse(
+      onTap: onMorePressed,
+      child: Container(
+        constraints: BoxConstraints(
+          maxHeight: 30,
+          minHeight: 30,
+          minWidth: 30,
+          maxWidth: 30,
+        ),
+        padding: EdgeInsets.all(0),
+        child: Icon(
+          Icons.more_vert,
+          color: Colors.grey,
+          size: 20,
+        ),
       ),
-      padding: EdgeInsets.all(0),
-      icon: Icon(Icons.more_vert, color: Colors.grey,),
-      iconSize: 20,
-      onPressed: onMorePressed,
     );
   }
 

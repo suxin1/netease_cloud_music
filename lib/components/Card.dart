@@ -18,7 +18,7 @@ class Card extends StatelessWidget {
     return Container(
       margin: EdgeInsets.only(left: 16.0, right: 16.0, bottom: 10.0),
       decoration: BoxDecoration(
-        borderRadius: BorderRadius.circular(16),
+        borderRadius: BorderRadius.circular(16.0),
         color: Colors.white,
         boxShadow: [
           BoxShadow(
@@ -28,11 +28,14 @@ class Card extends StatelessWidget {
           ),
         ],
       ),
-      child: Column(
-        children: [
-          _header(),
-          _body(),
-        ],
+      child: ClipRRect(
+        borderRadius: BorderRadius.circular(16.0),
+        child: Column(
+          children: [
+            _header(),
+            _body(),
+          ],
+        ),
       ),
     );
   }
