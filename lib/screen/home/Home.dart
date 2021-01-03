@@ -1,13 +1,13 @@
 import "package:flutter/material.dart";
 import "package:sliding_up_panel/sliding_up_panel.dart";
 import "package:NeteaseCloudMusic/screen/home/HomeBody.dart";
+import 'package:NeteaseCloudMusic/components/Drawers/3Ddrawer.dart';
 
 class HomeScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
-    // TODO: implement build
     return Scaffold(
-      body: HomeBody(),
+      body: CustomDrawer(child: HomeBody()),
     );
   }
 

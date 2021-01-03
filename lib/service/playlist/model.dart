@@ -14,16 +14,16 @@ part 'model.g.dart';
 // abstract class ResponseBase {
 //   int get code;
 // }
-abstract class Track implements Built<Track, TrackBuilder> {
+abstract class Song implements Built<Song, SongBuilder> {
   String get name;
   int get id;
   int get pst;
   int get t;
   BuiltList<Artist> get ar;
-  
-  Track._();
-  factory Track([void Function(TrackBuilder) updates]) = _$Track;
-  static Serializer<Track> get serializer => _$trackSerializer;
+
+  Song._();
+  factory Song([void Function(SongBuilder) updates]) = _$Song;
+  static Serializer<Song> get serializer => _$songSerializer;
 }
 
 abstract class Playlist implements Built<Playlist, PlaylistBuilder> {
@@ -61,6 +61,9 @@ abstract class Playlist implements Built<Playlist, PlaylistBuilder> {
 
   @nullable
   Profile get creator;
+
+  @nullable
+  BuiltList<Song> get tracks;
 
   Playlist._();
 

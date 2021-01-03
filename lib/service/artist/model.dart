@@ -1,9 +1,10 @@
-library playlist_model;
+library artist_model;
 
+import 'dart:convert';
 import "package:built_value/built_value.dart";
 import 'package:built_value/serializer.dart';
 
-part "model.g.dart";
+part 'model.g.dart';
 
 abstract class Artist implements Built<Artist, ArtistBuilder> {
   @nullable
