@@ -68,6 +68,12 @@ class _HomeBodyState extends State<HomeBody> {
       behavior: AppScrollBehavior(),
       child: ListView(
         children: [
+          RaisedButton(
+            onPressed: () {
+              Navigator.pushNamed(context, "/playlistShow");
+            },
+            child: Text("Click"),
+          ),
           _created(createdList),
           _collected(collectedList),
         ],
@@ -75,6 +81,9 @@ class _HomeBodyState extends State<HomeBody> {
     );
   }
 
+  /// 这里用了 ListView 里面的 ListView.Builder 来创建列表（使用迭代回调 itemBuilder
+  /// 函数根据数据动态渲染列表视图）。但嵌套 ListView 会报错，目前解决方式是提供
+  /// NeverScrollableScrollPhysics physics 参数来禁止嵌套 ListView 的滑动。
   Widget _created(List<Playlist> list) {
     return Card(
       title: "创建歌单（${list.length}个）",
