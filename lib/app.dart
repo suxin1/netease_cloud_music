@@ -2,11 +2,11 @@ import 'package:fluro/fluro.dart';
 import "package:flutter/material.dart";
 // import 'package:shared_preferences/shared_preferences.dart';
 
-import 'package:NeteaseCloudMusic/config/application.dart';
-import 'package:NeteaseCloudMusic/config/routes.dart';
-// import "package:NeteaseCloudMusic/screen/home/Home.dart";
-// import 'package:NeteaseCloudMusic/service/service.dart';
-// import 'package:NeteaseCloudMusic/service/user/user.dart';
+import 'package:netease_cloud_music/config/application.dart';
+import 'package:netease_cloud_music/config/routes.dart';
+// import "package:netease_cloud_music/screen/home/Home.dart";
+// import 'package:netease_cloud_music/service/service.dart';
+// import 'package:netease_cloud_music/service/user/user.dart';
 
 class AppComponent extends StatefulWidget {
   final String initialPage;

@@ -1,7 +1,7 @@
 import "package:flutter/material.dart";
-import "package:NeteaseCloudMusic/screen/detail/Detail.dart";
-import "package:NeteaseCloudMusic/animation.dart";
-import 'package:NeteaseCloudMusic/theme/TextType.dart';
+import "package:netease_cloud_music/screen/detail/Detail.dart";
+import "package:netease_cloud_music/animation.dart";
+import 'package:netease_cloud_music/theme/TextType.dart';
 
 /// Planet卡片展示
 class PlanetSummary extends StatelessWidget {

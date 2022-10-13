@@ -3,7 +3,7 @@ import "package:flutter/material.dart";
 class CustomDrawer extends StatefulWidget {
   final Widget child;
 
-  CustomDrawer({@required this.child});
+  CustomDrawer({required this.child});
 
   @override
   _CustomDrawerState createState() => _CustomDrawerState();
@@ -15,7 +15,7 @@ class _CustomDrawerState extends State<CustomDrawer>
   final double maxRadius = 40.0;
   bool _canBeDragged = false;
 
-  AnimationController ac;
+  late AnimationController ac;
 
   @override
   void initState() {

@@ -1,5 +1,5 @@
 import "package:flutter/material.dart";
-import 'package:NeteaseCloudMusic/theme/TextType.dart';
+import 'package:netease_cloud_music/theme/TextType.dart';
 
 class Card extends StatelessWidget {
   final Widget child;
@@ -7,20 +7,20 @@ class Card extends StatelessWidget {
   final TextStyle textStyle;
 
   Card({
-    Key key,
-    this.child,
-    this.title,
-    this.textStyle,
+    required Key key,
+    required this.child,
+    required this.title,
+    required this.textStyle,
   }) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
     return Container(
-      margin: EdgeInsets.only(left: 16.0, right: 16.0, bottom: 10.0),
+      margin: const EdgeInsets.only(left: 16.0, right: 16.0, bottom: 10.0),
       decoration: BoxDecoration(
         borderRadius: BorderRadius.circular(16.0),
         color: Colors.white,
-        boxShadow: [
+        boxShadow: const [
           BoxShadow(
             color: Color(0xFFEEEEEE),
             blurRadius: 20.0,
@@ -44,7 +44,8 @@ class Card extends StatelessWidget {
     return Container(
       height: 44,
       padding: EdgeInsets.only(
-        left: 16.0, right: 8.0,
+        left: 16.0,
+        right: 8.0,
       ),
       // color: Colors.red,
       child: Row(

@@ -1,8 +1,8 @@
 import "package:flutter/material.dart";
-import "package:NeteaseCloudMusic/service/playlist/model.dart";
-import 'package:NeteaseCloudMusic/theme/TextType.dart';
-import "package:NeteaseCloudMusic/patched/noSplash.dart";
-import "package:NeteaseCloudMusic/components/Ink.dart";
+import "package:netease_cloud_music/service/playlist/model.dart";
+import 'package:netease_cloud_music/theme/TextType.dart';
+import "package:netease_cloud_music/patched/noSplash.dart";
+import "package:netease_cloud_music/components/Ink.dart";
 
 class PlaylistCard extends StatelessWidget {
   final Playlist playlist;

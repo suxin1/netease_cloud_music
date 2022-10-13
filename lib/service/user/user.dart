@@ -6,10 +6,10 @@ import "package:rxdart/rxdart.dart";
 import "package:fluttertoast/fluttertoast.dart";
 
 import 'package:shared_preferences/shared_preferences.dart';
-import 'package:NeteaseCloudMusic/service/user/model.dart';
-import 'package:NeteaseCloudMusic/network/httpRequest.dart';
+import 'package:netease_cloud_music/service/user/model.dart';
+import 'package:netease_cloud_music/network/httpRequest.dart';
 
-const ACCOUNT_DATA_KEY = 'account';
+const String ACCOUNT_DATA_KEY = "account";
 
 class AccountData {
   LoginResponse loginResponse = LoginResponse();

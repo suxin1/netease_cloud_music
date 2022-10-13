@@ -1,8 +1,8 @@
-import 'package:NeteaseCloudMusic/config/application.dart';
-import 'package:NeteaseCloudMusic/service/service.dart';
-import 'package:NeteaseCloudMusic/service/user/user.dart';
+import 'package:netease_cloud_music/config/application.dart';
+import 'package:netease_cloud_music/service/service.dart';
+import 'package:netease_cloud_music/service/user/user.dart';
 import "package:flutter/material.dart";
-import "package:NeteaseCloudMusic/components/Input.dart";
+import "package:netease_cloud_music/components/Input.dart";
 
 class LoginForm extends StatefulWidget {
   const LoginForm({

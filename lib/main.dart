@@ -1,8 +1,8 @@
 import "package:flutter/material.dart";
 import 'package:shared_preferences/shared_preferences.dart';
 
-import 'package:NeteaseCloudMusic/service/service.dart';
-import 'package:NeteaseCloudMusic/service/user/user.dart';
+import 'package:netease_cloud_music/service/service.dart';
+import 'package:netease_cloud_music/service/user/user.dart';
 
 import 'app.dart';
 
@@ -21,7 +21,7 @@ void main() {
 
 void runAppAsync() async {
   SharedPreferences prefs = await SharedPreferences.getInstance();
-  String accountStr = prefs.getString(ACCOUNT_DATA_KEY);
+  String? accountStr = prefs.getString(ACCOUNT_DATA_KEY);
   if (accountStr != null) {
     runApp(
       AppComponent(initialPage: '/home'),

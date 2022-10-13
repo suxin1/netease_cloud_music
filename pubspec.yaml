@@ -1,8 +1,8 @@
-name: NeteaseCloudMusic
+name: netease_cloud_music
 description: A new Flutter project.
 
 # The following line prevents the package from being accidentally published to
-# pub.dev using `pub publish`. This is preferred for private packages.
+# pub.dev using `flutter pub publish`. This is preferred for private packages.
 publish_to: 'none' # Remove this line if you wish to publish to pub.dev
 
 # The following defines the version and build number for your application.
@@ -12,50 +12,66 @@ publish_to: 'none' # Remove this line if you wish to publish to pub.dev
 # build by specifying --build-name and --build-number, respectively.
 # In Android, build-name is used as versionName while build-number used as versionCode.
 # Read more about Android versioning at https://developer.android.com/studio/publish/versioning
-# In iOS, build-name is used as CFBundleShortVersionString while build-number used as CFBundleVersion.
+# In iOS, build-name is used as CFBundleShortVersionString while build-number is used as CFBundleVersion.
 # Read more about iOS versioning at
 # https://developer.apple.com/library/archive/documentation/General/Reference/InfoPlistKeyReference/Articles/CoreFoundationKeys.html
+# In Windows, build-name is used as the major, minor, and patch parts
+# of the product and file versions while build-number is used as the build suffix.
 version: 1.0.0+1
 
 environment:
-  sdk: ">=2.7.0 <3.0.0"
+  sdk: '>=2.18.2 <3.0.0'
 
+# Dependencies specify other packages that your package needs in order to work.
+# To automatically upgrade your package dependencies to the latest versions
+# consider running `flutter pub upgrade --major-versions`. Alternatively,
+# dependencies can be manually updated by changing the version numbers below to
+# the latest version available on pub.dev. To see which dependencies have newer
+# versions available, run `flutter pub outdated`.
 dependencies:
   flutter:
     sdk: flutter
 
+
   # The following adds the Cupertino Icons font to your application.
   # Use with the CupertinoIcons class for iOS style icons.
-  cupertino_icons: ^1.0.0
+  cupertino_icons: ^1.0.2
 
-  flutter_svg: ^0.19.1
+  flutter_svg: ^1.1.5
 
-  dio: ^3.0.10
+  dio: ^4.0.6
 
-  rxdart: ^0.24.1
-  get_it: ^5.0.3
+  rxdart: ^0.27.5
+  get_it: ^7.2.0
 
-  built_value: ^7.1.0
-  built_collection: ^4.3.2
+  built_value: ^8.4.1
+  built_collection: ^5.1.1
 
-  fluttertoast: ^7.1.6
+  fluttertoast: ^8.0.9
 
-  shared_preferences: ^0.5.12+4
+  shared_preferences: ^2.0.15
 
-  fluro: ^1.7.8
-  sliding_up_panel: ^1.0.2
+  fluro: ^2.0.3
+  sliding_up_panel: ^2.0.0+1
 
 dev_dependencies:
   flutter_test:
     sdk: flutter
-  
-  build_runner: ^1.10.2
-  built_value_generator: ^7.1.0
+
+  # The "flutter_lints" package below contains a set of recommended lints to
+  # encourage good coding practices. The lint set provided by the package is
+  # activated in the `analysis_options.yaml` file located at the root of your
+  # package. See that file for information about deactivating specific lint
+  # rules and activating additional ones.
+  flutter_lints: ^2.0.0
+
+  build_runner: ^2.3.0
+  built_value_generator: ^8.4.1
 
 # For information on the generic Dart part of this file, see the
 # following page: https://dart.dev/tools/pub/pubspec
 
-# The following section is specific to Flutter.
+# The following section is specific to Flutter packages.
 flutter:
 
   # The following line ensures that the Material Icons font is
@@ -67,19 +83,9 @@ flutter:
   # assets:
   #   - images/a_dot_burr.jpeg
   #   - images/a_dot_ham.jpeg
-  assets:
-    - assets/images/mars.png
-    - assets/images/earth.png
-    - assets/images/mercury.png
-    - assets/images/moon.png
-    - assets/images/neptune.png
-    - assets/images/ic_distance.png
-    - assets/images/ic_gravity.png
-    - assets/logo.svg
-    - assets/json/mock.json
 
   # An image asset can refer to one or more resolution-specific "variants", see
-  # https://flutter.dev/assets-and-images/#resolution-aware.
+  # https://flutter.dev/assets-and-images/#resolution-aware
 
   # For details regarding adding assets from package dependencies, see
   # https://flutter.dev/assets-and-images/#from-packages
@@ -103,3 +109,13 @@ flutter:
   #
   # For details regarding fonts from package dependencies,
   # see https://flutter.dev/custom-fonts/#from-packages
+  assets:
+    - assets/images/mars.png
+    - assets/images/earth.png
+    - assets/images/mercury.png
+    - assets/images/moon.png
+    - assets/images/neptune.png
+    - assets/images/ic_distance.png
+    - assets/images/ic_gravity.png
+    - assets/logo.svg
+    - assets/json/mock.json

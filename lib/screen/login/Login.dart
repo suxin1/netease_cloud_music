@@ -2,11 +2,11 @@ import "package:flutter/material.dart";
 import "package:flutter_svg/flutter_svg.dart";
 
 // import "package:redux/redux.dart";
-import "package:NeteaseCloudMusic/theme/default.dart";
-import "package:NeteaseCloudMusic/screen/login/Form.dart";
+import "package:netease_cloud_music/theme/default.dart";
+import "package:netease_cloud_music/screen/login/Form.dart";
 
-import 'package:NeteaseCloudMusic/service/service.dart';
-import 'package:NeteaseCloudMusic/service/counter.dart';
+import 'package:netease_cloud_music/service/service.dart';
+import 'package:netease_cloud_music/service/counter.dart';
 
 class LoginScreen extends StatelessWidget {
   @override

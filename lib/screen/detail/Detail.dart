@@ -1,8 +1,8 @@
 import 'package:flutter/cupertino.dart';
 import "package:flutter/material.dart";
-import "package:NeteaseCloudMusic/components/PlanetSummary.dart";
-import 'package:NeteaseCloudMusic/theme/TextType.dart';
-import "package:NeteaseCloudMusic/components/Separator.dart";
+import "package:netease_cloud_music/components/PlanetSummary.dart";
+import 'package:netease_cloud_music/theme/TextType.dart';
+import "package:netease_cloud_music/components/Separator.dart";
 
 class Detail extends StatelessWidget {
   final PlanetData paramData;

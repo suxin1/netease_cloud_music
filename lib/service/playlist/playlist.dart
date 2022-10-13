@@ -4,8 +4,8 @@ import "package:dio/dio.dart";
 import "package:rxdart/rxdart.dart";
 import "package:built_collection/built_collection.dart";
 
-import 'package:NeteaseCloudMusic/network/httpRequest.dart';
-import 'package:NeteaseCloudMusic/service/playlist/model.dart';
+import 'package:netease_cloud_music/network/httpRequest.dart';
+import 'package:netease_cloud_music/service/playlist/model.dart';
 
 class PlaylistService {
   BehaviorSubject<BuiltList<Playlist>> _playlists =

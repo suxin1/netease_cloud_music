@@ -1,10 +1,10 @@
 import "package:flutter/material.dart";
-import "package:NeteaseCloudMusic/screen/home_plant/GradientAppBar.dart";
-import "package:NeteaseCloudMusic/screen/home_plant/HomeBody.dart";
+import "package:netease_cloud_music/screen/home_plant/GradientAppBar.dart";
+import "package:netease_cloud_music/screen/home_plant/HomeBody.dart";
 
-import 'package:NeteaseCloudMusic/service/service.dart';
-import 'package:NeteaseCloudMusic/service/user/user.dart';
-// import 'package:NeteaseCloudMusic/service/model/account.dart';
+import 'package:netease_cloud_music/service/service.dart';
+import 'package:netease_cloud_music/service/user/user.dart';
+// import 'package:netease_cloud_music/service/model/account.dart';
 
 class HomeScreen extends StatelessWidget {
   final counterService = service.get<User>();

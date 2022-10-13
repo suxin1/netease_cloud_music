@@ -1,5 +1,5 @@
 import "package:flutter/material.dart";
-import "package:NeteaseCloudMusic/components/Drawers/CustomDrawer.dart";
+import "package:netease_cloud_music/components/Drawers/CustomDrawer.dart";
 
 class PlaylistShow extends StatelessWidget {
   @override

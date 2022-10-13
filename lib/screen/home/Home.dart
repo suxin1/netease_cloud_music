@@ -1,7 +1,7 @@
 import "package:flutter/material.dart";
 import "package:sliding_up_panel/sliding_up_panel.dart";
-import "package:NeteaseCloudMusic/screen/home/HomeBody.dart";
-import 'package:NeteaseCloudMusic/components/Drawers/CustomDrawer.dart';
+import "package:netease_cloud_music/screen/home/HomeBody.dart";
+import 'package:netease_cloud_music/components/Drawers/CustomDrawer.dart';
 
 class HomeScreen extends StatelessWidget {
   @override

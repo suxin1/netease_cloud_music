@@ -2,17 +2,17 @@ import "package:flutter/material.dart" hide Card;
 
 import "package:rxdart/rxdart.dart";
 import "package:built_collection/built_collection.dart" show BuiltList;
-import "package:NeteaseCloudMusic/patched/scrollBehavior.dart";
+import "package:netease_cloud_music/patched/scrollBehavior.dart";
 
 // components
-import "package:NeteaseCloudMusic/components/PlaylistCard.dart";
-import "package:NeteaseCloudMusic/components/Card.dart";
+import "package:netease_cloud_music/components/PlaylistCard.dart";
+import "package:netease_cloud_music/components/Card.dart";
 
 // service
-import "package:NeteaseCloudMusic/service/service.dart";
-import "package:NeteaseCloudMusic/service/user/user.dart";
-import "package:NeteaseCloudMusic/service/playlist/playlist.dart";
-import "package:NeteaseCloudMusic/service/playlist/model.dart";
+import "package:netease_cloud_music/service/service.dart";
+import "package:netease_cloud_music/service/user/user.dart";
+import "package:netease_cloud_music/service/playlist/playlist.dart";
+import "package:netease_cloud_music/service/playlist/model.dart";
 
 class HomeBody extends StatefulWidget {
   const HomeBody({Key key}) : super(key: key);

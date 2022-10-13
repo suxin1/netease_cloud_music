@@ -1,4 +1,4 @@
-import 'package:NeteaseCloudMusic/config/route_handlers.dart';
+import 'package:netease_cloud_music/config/route_handlers.dart';
 import 'package:fluro/fluro.dart';
 import 'package:flutter/material.dart';
 

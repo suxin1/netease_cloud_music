@@ -5,9 +5,9 @@ import "package:built_value/built_value.dart";
 import 'package:built_value/serializer.dart';
 import 'package:built_collection/built_collection.dart';
 
-import 'package:NeteaseCloudMusic/service/serializers.dart';
-import 'package:NeteaseCloudMusic/service/user/model.dart';
-import 'package:NeteaseCloudMusic/service/artist/model.dart';
+import 'package:netease_cloud_music/service/serializers.dart';
+import 'package:netease_cloud_music/service/user/model.dart';
+import 'package:netease_cloud_music/service/artist/model.dart';
 
 part 'model.g.dart';
 

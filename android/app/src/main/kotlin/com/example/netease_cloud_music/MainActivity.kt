@@ -1,4 +1,4 @@
-package com.example.NeteaseCloudMusic
+package com.example.netease_cloud_music
 
 import io.flutter.embedding.android.FlutterActivity
 
