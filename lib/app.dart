@@ -10,7 +10,7 @@ import 'package:netease_cloud_music/config/routes.dart';
 
 class AppComponent extends StatefulWidget {
   final String initialPage;
-  AppComponent({this.initialPage});
+  AppComponent({required this.initialPage});
 
   @override
   _AppComponentState createState() => _AppComponentState();
@@ -28,7 +28,7 @@ class _AppComponentState extends State<AppComponent> {
     return MaterialApp(
       title: "网抑云",
       // home: HomeScreen(),
-      onGenerateRoute: Application.router.generator,
+      onGenerateRoute: Application.router?.generator,
       debugShowCheckedModeBanner: false,
       // navigatorKey: navigatorKey,
       initialRoute: widget.initialPage,

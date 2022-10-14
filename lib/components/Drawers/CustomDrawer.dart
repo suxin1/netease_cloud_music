@@ -3,7 +3,7 @@ import "package:flutter/material.dart";
 class CustomDrawer extends StatefulWidget {
   final Widget child;
 
-  CustomDrawer({required this.child});
+  const CustomDrawer({required this.child});
 
   @override
   _CustomDrawerState createState() => _CustomDrawerState();
@@ -22,7 +22,7 @@ class _CustomDrawerState extends State<CustomDrawer>
     super.initState();
     ac = AnimationController(
       vsync: this,
-      duration: Duration(milliseconds: 230),
+      duration: const Duration(milliseconds: 230),
     );
   }
 
@@ -54,7 +54,7 @@ class _CustomDrawerState extends State<CustomDrawer>
 
   void _onDragUpdate(DragUpdateDetails e) {
     if (_canBeDragged) {
-      double delta = e.primaryDelta / maxSlide;
+      double delta = e.primaryDelta! / maxSlide;
       ac.value += delta;
     }
     print("drag update");

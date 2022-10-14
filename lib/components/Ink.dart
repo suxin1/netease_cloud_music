@@ -5,7 +5,7 @@ class TapResponse extends StatefulWidget {
   final Widget child;
   final GestureTapCallback onTap;
 
-  TapResponse({@required this.child, this.onTap});
+  TapResponse({required this.child, required this.onTap});
 
   @override
   _TapResponseState createState() => _TapResponseState();

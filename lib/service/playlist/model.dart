@@ -28,42 +28,34 @@ abstract class Song implements Built<Song, SongBuilder> {
 
 abstract class Playlist implements Built<Playlist, PlaylistBuilder> {
   // Fields
-  @nullable
-  int get id;
-  @nullable
-  String get name;
-  @nullable
-  bool get subscribed;
-  @nullable
-  int get subscribedCount;
-  @nullable
-  DateTime get createTime;
-  @nullable
-  int get trackCount;
 
-  @nullable
-  String get description;
+  int? get id;
 
-  @nullable
-  int get coverImgId;
+  String? get name;
 
-  @nullable
-  String get coverImgId_str;
+  bool? get subscribed;
 
-  @nullable
-  String get coverImgUrl;
+  int? get subscribedCount;
 
-  @nullable
-  int get playCount;
+  DateTime? get createTime;
 
-  @nullable
-  int get specialType;
+  int? get trackCount;
 
-  @nullable
-  Profile get creator;
+  String? get description;
 
-  @nullable
-  BuiltList<Song> get tracks;
+  int? get coverImgId;
+
+  String? get coverImgId_str;
+
+  String? get coverImgUrl;
+
+  int? get playCount;
+
+  int? get specialType;
+
+  Profile? get creator;
+
+  BuiltList<Song>? get tracks;
 
   Playlist._();
 
@@ -74,8 +66,7 @@ abstract class Playlist implements Built<Playlist, PlaylistBuilder> {
   }
 
   static Playlist fromJson(String jsonString) {
-    return serializers.deserializeWith(
-        Playlist.serializer, json.decode(jsonString));
+    return serializers.deserializeWith(Playlist.serializer, json.decode(jsonString))!;
   }
 
   static Serializer<Playlist> get serializer => _$playlistSerializer;
@@ -84,10 +75,10 @@ abstract class Playlist implements Built<Playlist, PlaylistBuilder> {
 // 歌单相应对象
 abstract class Playlists implements Built<Playlists, PlaylistsBuilder> {
   // Fields
-  @nullable
-  int get code;
-  @nullable
-  bool get more;
+
+  int? get code;
+
+  bool? get more;
 
   BuiltList<Playlist> get playlist;
 
@@ -96,7 +87,7 @@ abstract class Playlists implements Built<Playlists, PlaylistsBuilder> {
   factory Playlists([void Function(PlaylistsBuilder) updates]) = _$Playlists;
 
   factory Playlists.fromMap(Map<String, dynamic> data) {
-    return serializers.deserializeWith(Playlists.serializer, data);
+    return serializers.deserializeWith(Playlists.serializer, data)!;
   }
 
   String toJson() {
@@ -104,8 +95,7 @@ abstract class Playlists implements Built<Playlists, PlaylistsBuilder> {
   }
 
   static Playlists fromJson(String jsonString) {
-    return serializers.deserializeWith(
-        Playlists.serializer, json.decode(jsonString));
+    return serializers.deserializeWith(Playlists.serializer, json.decode(jsonString))!;
   }
 
   static Serializer<Playlists> get serializer => _$playlistsSerializer;

@@ -2,20 +2,20 @@ import "package:flutter/material.dart";
 
 class Input extends StatelessWidget {
   final String hintText;
-  final Function validator;
+  final Function? validator;
   final bool obscureText;
   final bool autofocus;
   final IconData icon;
   final TextEditingController _controller;
 
   const Input({
-    Key key,
-    this.hintText,
-    this.validator,
+    Key? key,
+    required this.hintText,
+    required this.validator,
     this.obscureText = false,
     this.autofocus = false,
-    this.icon,
-    @required TextEditingController controller,
+    required this.icon,
+    required TextEditingController controller,
   })  : _controller = controller,
         super(key: key);
 
@@ -37,7 +37,7 @@ class Input extends StatelessWidget {
           filled: true,
           fillColor: Color(0xCCFFFFFF),
           hintText: hintText,
-          border: OutlineInputBorder(
+          border: const OutlineInputBorder(
             borderRadius: BorderRadius.all(Radius.circular(50)),
             borderSide: BorderSide.none,
           ),
@@ -49,7 +49,7 @@ class Input extends StatelessWidget {
                   size: 20,
                 )
               : null,
-          errorStyle: TextStyle(
+          errorStyle: const TextStyle(
             color: Colors.white,
             height: 1,
             fontSize: 10,

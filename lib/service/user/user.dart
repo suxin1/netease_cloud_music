@@ -13,7 +13,7 @@ const String ACCOUNT_DATA_KEY = "account";
 
 class AccountData {
   LoginResponse loginResponse = LoginResponse();
-  bool progressing;
+  bool progressing = false;
 
   AccountData();
 }
@@ -26,7 +26,7 @@ class User {
 
   LoginResponse get current => _account.value;
 
-  SharedPreferences prefs;
+  SharedPreferences? prefs;
 
   User() {
     initState();
@@ -34,7 +34,8 @@ class User {
 
   void initState() async {
     prefs = await SharedPreferences.getInstance();
-    String accountStr = prefs.getString(ACCOUNT_DATA_KEY);
+    String? accountStr = prefs?.getString(ACCOUNT_DATA_KEY);
+
     if (accountStr != null) {
       Map<String, dynamic> data = json.decode(accountStr);
       LoginResponse deserializedData = LoginResponse.fromMap(data);
@@ -60,7 +61,7 @@ class User {
     );
 
     LoginResponse user = LoginResponse.fromMap(response.data);
-    prefs.setString(ACCOUNT_DATA_KEY, response.toString());
+    prefs?.setString(ACCOUNT_DATA_KEY, response.toString());
 
     _account.add(user);
     return response;

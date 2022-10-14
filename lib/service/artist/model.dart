@@ -7,10 +7,9 @@ import 'package:built_value/serializer.dart';
 part 'model.g.dart';
 
 abstract class Artist implements Built<Artist, ArtistBuilder> {
-  @nullable
-  int get id;
-  @nullable
-  int get name;
+  int? get id;
+
+  int? get name;
 
   Artist._();
   factory Artist([void Function(ArtistBuilder) updates]) = _$Artist;

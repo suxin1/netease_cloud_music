@@ -36,7 +36,7 @@ class PlanetSummary extends StatelessWidget {
     );
   }
 
-  Widget _planetCardRow({String text, String img}) {
+  Widget _planetCardRow({required String text, required String img}) {
     return Row(
       mainAxisAlignment:
           horizontal ? MainAxisAlignment.start : MainAxisAlignment.center,
@@ -102,7 +102,7 @@ class PlanetSummary extends StatelessWidget {
           color: Color(0xFF333366),
           shape: BoxShape.rectangle,
           borderRadius: BorderRadius.circular(8.0),
-          boxShadow: [
+          boxShadow: const [
             BoxShadow(
               color: Colors.black12,
               blurRadius: 10.0,
@@ -133,13 +133,13 @@ class PlanetData {
   final String picture;
 
   const PlanetData({
-    this.id,
-    this.name,
-    this.location,
-    this.distance,
-    this.gravity,
-    this.description,
-    this.image,
-    this.picture,
+    required this.id,
+    required this.name,
+    required this.location,
+    required this.distance,
+    required this.gravity,
+    required this.description,
+    required this.image,
+    required this.picture,
   });
 }

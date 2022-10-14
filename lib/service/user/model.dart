@@ -11,34 +11,33 @@ part 'model.g.dart';
 
 abstract class Account implements Built<Account, AccountBuilder> {
   // Fields
-  @nullable
-  bool get anonimousUser;
-  @nullable
-  int get ban;
-  @nullable
-  int get baoyueVersion;
-  @nullable
-  DateTime get createTime;
-  @nullable
-  int get donateVersion;
-  @nullable
-  int get id;
-  @nullable
-  String get salt;
-  @nullable
-  int get status;
-  @nullable
-  int get tokenVersion;
-  @nullable
-  int get type;
-  @nullable
-  String get userName;
-  @nullable
-  int get vipType;
-  @nullable
-  int get vipTypeVersion;
-  @nullable
-  int get whitelistAuthority;
+  bool? get anonimousUser;
+
+  int? get ban;
+
+  int? get baoyueVersion;
+
+  DateTime? get createTime;
+
+  int? get donateVersion;
+
+  int? get id;
+
+  String? get salt;
+
+  int? get status;
+
+  int? get tokenVersion;
+
+  int? get type;
+
+  String? get userName;
+
+  int? get vipType;
+
+  int? get vipTypeVersion;
+
+  int? get whitelistAuthority;
 
   Account._();
 
@@ -49,137 +48,107 @@ abstract class Account implements Built<Account, AccountBuilder> {
 
 abstract class Profile implements Built<Profile, ProfileBuilder> {
   // Fields
+  int? get accountStatus;
 
-  @nullable
-  int get accountStatus;
+  int? get authStatus;
 
-  @nullable
-  int get authStatus;
+  int? get authority;
 
-  @nullable
-  int get authority;
+  String? get avatarDetail;
 
-  @nullable
-  String get avatarDetail;
+  int? get avatarImgId;
 
-  @nullable
-  int get avatarImgId;
+  String? get avatarImgIdStr;
 
-  @nullable
-  String get avatarImgIdStr;
+  String? get avatarImgId_str;
 
-  @nullable
-  String get avatarImgId_str;
+  String? get avatarUrl;
 
-  @nullable
-  String get avatarUrl;
+  int? get backgroundImgId;
 
-  @nullable
-  int get backgroundImgId;
+  String? get backgroundImgIdStr;
 
-  @nullable
-  String get backgroundImgIdStr;
+  String? get backgroundUrl;
 
-  @nullable
-  String get backgroundUrl;
+  int? get birthday;
 
-  @nullable
-  int get birthday;
+  int? get city;
 
-  @nullable
-  int get city;
+  bool? get defaultAvatar;
 
-  @nullable
-  bool get defaultAvatar;
+  String? get description;
 
-  @nullable
-  String get description;
+  String? get detailDescription;
 
-  @nullable
-  String get detailDescription;
+  int? get djStatus;
 
-  @nullable
-  int get djStatus;
+  int? get eventCount;
 
-  @nullable
-  int get eventCount;
+  BuiltList<String>? get expertTags;
 
-  @nullable
-  BuiltList<String> get expertTags;
+//
+// Experts? get experts;
 
-// @nullable
-// Experts get experts;
+  bool? get followed;
 
-  @nullable
-  bool get followed;
+  int? get followeds;
 
-  @nullable
-  int get followeds;
+  int? get follows;
 
-  @nullable
-  int get follows;
+  int? get gender;
 
-  @nullable
-  int get gender;
+  bool? get mutual;
 
-  @nullable
-  bool get mutual;
+  String? get nickname;
 
-  @nullable
-  String get nickname;
+  int? get playlistBeSubscribedCount;
 
-  @nullable
-  int get playlistBeSubscribedCount;
+  int? get playlistCount;
 
-  @nullable
-  int get playlistCount;
+  int? get province;
 
-  @nullable
-  int get province;
+  String? get remarkName;
 
-  @nullable
-  String get remarkName;
+  String? get signature;
 
-  @nullable
-  String get signature;
+  int? get userId;
 
-  @nullable
-  int get userId;
+  int? get userType;
 
-  @nullable
-  int get userType;
-  @nullable
-  int get vipType;
+  int? get vipType;
 
   Profile._();
+
   factory Profile([void Function(ProfileBuilder) updates]) = _$Profile;
+
   static Serializer<Profile> get serializer => _$profileSerializer;
 }
 
 abstract class Binding implements Built<Binding, BindingBuilder> {
   // Fields
-  @nullable
-  DateTime get bindingTime;
-  @nullable
-  int get expiresIn;
-  @nullable
-  bool get expired;
-  @nullable
-  int get id;
-  @nullable
-  DateTime get refreshTime;
-  @nullable
-  String get tokenJsonStr;
-  @nullable
-  int get type;
-  @nullable
-  String get url;
-  @nullable
-  int get userId;
+
+  DateTime? get bindingTime;
+
+  int? get expiresIn;
+
+  bool? get expired;
+
+  int? get id;
+
+  DateTime? get refreshTime;
+
+  String? get tokenJsonStr;
+
+  int? get type;
+
+  String? get url;
+
+  int? get userId;
 
   Binding._();
 
   factory Binding([void Function(BindingBuilder) updates]) = _$Binding;
+
   static Serializer<Binding> get serializer => _$bindingSerializer;
 }
 
@@ -187,24 +156,27 @@ abstract class LoginResponse
     implements Built<LoginResponse, LoginResponseBuilder> {
   // Fields
   Account get account;
+
   Profile get profile;
+
   BuiltList<Binding> get bindings;
-  @nullable
-  int get code;
-  @nullable
-  String get cookie;
-  @nullable
-  int get loginType;
-  @nullable
-  String get token;
+
+  int? get code;
+
+  String? get cookie;
+
+  int? get loginType;
+
+  String? get token;
 
   LoginResponse._();
 
   factory LoginResponse.fromMap(Map<String, dynamic> data) {
-    return serializers.deserializeWith(LoginResponse.serializer, data);
+    return serializers.deserializeWith<LoginResponse>(LoginResponse.serializer, data)!;
   }
 
   factory LoginResponse([void Function(LoginResponseBuilder) updates]) =
       _$LoginResponse;
+
   static Serializer<LoginResponse> get serializer => _$loginResponseSerializer;
 }

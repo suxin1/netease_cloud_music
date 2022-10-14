@@ -22,7 +22,7 @@ samples, guidance on mobile development, and a full API reference.
 # 安装依赖包
 flutter pub get
 
-# built_value 代码自动生成（接口数据的序列化与反序列化）
+# built_value 数据模型代码自动生成命令（接口数据的序列化与反序列化）
 flutter pub run build_runner build
 
 ```

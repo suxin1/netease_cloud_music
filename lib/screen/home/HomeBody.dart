@@ -15,13 +15,13 @@ import "package:netease_cloud_music/service/playlist/playlist.dart";
 import "package:netease_cloud_music/service/playlist/model.dart";
 
 class HomeBody extends StatefulWidget {
-  const HomeBody({Key key}) : super(key: key);
+  const HomeBody({Key? key}) : super(key: key);
 
   @override
-  _HomeBodyState createState() => _HomeBodyState();
+  HomeBodyState createState() => HomeBodyState();
 }
 
-class _HomeBodyState extends State<HomeBody> {
+class HomeBodyState extends State<HomeBody> {
   final userService = service.get<User>();
   final playlistService = service.get<PlaylistService>();
 
@@ -29,7 +29,7 @@ class _HomeBodyState extends State<HomeBody> {
   void initState() {
     super.initState();
     if (userService.current.account.id != null) {
-      playlistService.get(userService.current.account.id);
+      playlistService.get(userService.current.account.id as int);
     }
   }
 
@@ -45,7 +45,7 @@ class _HomeBodyState extends State<HomeBody> {
             list = snapshot.data;
           }
           return Container(
-            color: Color(0xFFFAFAFA),
+            color: const Color(0xFFFAFAFA),
             padding: EdgeInsets.only(top: MediaQuery.of(context).padding.top),
             child: listView(list),
           );
@@ -53,26 +53,26 @@ class _HomeBodyState extends State<HomeBody> {
   }
 
   Widget listView(BuiltList<Playlist> list) {
-    print("build");
     Playlist liked;
-    List<Playlist> createdList = List<Playlist>();
-    List<Playlist> collectedList = List<Playlist>();
+    List<Playlist> createdList = <Playlist>[];
+    List<Playlist> collectedList = <Playlist>[];
     for (Playlist item in list) {
-      if (item.creator.userId == userService.current.profile.userId) {
+      if (item.creator?.userId == userService.current.profile.userId) {
         if (item.specialType == 5) liked = item;
         if (item.specialType == 0) createdList.add(item);
-      } else
+      } else {
         collectedList.add(item);
+      }
     }
     return ScrollConfiguration(
       behavior: AppScrollBehavior(),
       child: ListView(
         children: [
-          RaisedButton(
+          TextButton(
             onPressed: () {
               Navigator.pushNamed(context, "/playlistShow");
             },
-            child: Text("Click"),
+            child: const Text("Click"),
           ),
           _created(createdList),
           _collected(collectedList),
@@ -88,13 +88,14 @@ class _HomeBodyState extends State<HomeBody> {
     return Card(
       title: "创建歌单（${list.length}个）",
       child: ListView.builder(
-        physics: NeverScrollableScrollPhysics(),
+        physics: const NeverScrollableScrollPhysics(),
         scrollDirection: Axis.vertical,
         shrinkWrap: true,
         itemCount: list.length,
         itemBuilder: (_, int index) => PlaylistCard(
           list[index],
           onTap: () => {print("topped")},
+          onMorePressed: () => {},
         ),
       ),
     );
@@ -123,9 +124,9 @@ class _HomeBodyState extends State<HomeBody> {
           SliverPadding(
             padding: EdgeInsets.symmetric(vertical: 16.0),
             sliver: SliverFixedExtentList(
-              // itemExtent: 152.0,
+              itemExtent: 152.0,
               delegate: SliverChildBuilderDelegate(
-                (_, index) => PlaylistCard(list[index]),
+                (_, index) => PlaylistCard(list[index], onTap: () => {}, onMorePressed: () => {}),
                 childCount: list.length,
               ),
             ),

@@ -31,8 +31,8 @@ class Iso8601DateTimeSerializer implements PrimitiveSerializer<DateTime> {
   }
 
   @override
-  DateTime deserialize(Serializers serializers, Object serialized,
+  DateTime deserialize(Serializers serializers, Object? serialized,
       {FullType specifiedType = FullType.unspecified}) {
-    return DateTime.fromMillisecondsSinceEpoch(serialized).toUtc();
+    return DateTime.fromMillisecondsSinceEpoch(serialized as int).toUtc();
   }
 }

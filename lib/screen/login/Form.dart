@@ -6,7 +6,7 @@ import "package:netease_cloud_music/components/Input.dart";
 
 class LoginForm extends StatefulWidget {
   const LoginForm({
-    Key key,
+    Key? key,
   }) : super(key: key);
 
   @override
@@ -50,7 +50,7 @@ class _LoginFormState extends State<LoginForm> {
               controller: _nameController,
               hintText: "手机号或邮箱",
               autofocus: false,
-              // icon: Icons.person,
+              icon: Icons.person,
               validator: (v) {
                 return v.trim().length > 0 ? null : "请输入手机号或邮箱";
               },
@@ -59,7 +59,7 @@ class _LoginFormState extends State<LoginForm> {
               controller: _passwdController,
               hintText: "请输入密码",
               obscureText: true,
-              // icon: Icons.lock,
+              icon: Icons.lock,
               validator: (v) {
                 return v.trim().length >= 6 ? null : "请输入密码";
               },
@@ -77,17 +77,19 @@ class _LoginFormState extends State<LoginForm> {
       child: SizedBox(
         height: 40,
         width: double.infinity,
-        child: RaisedButton(
-          shape: RoundedRectangleBorder(
-            borderRadius: BorderRadius.circular(28),
-          ),
-          padding: EdgeInsets.all(8),
+        child: TextButton(
+          // shape: RoundedRectangleBorder(
+          //   borderRadius: BorderRadius.circular(28),
+          // ),
+          // padding: EdgeInsets.all(8),
           child: Text("登录"),
-          color: Colors.white,
-          textColor: Colors.black,
+          // color: Colors.white,
+          // textColor: Colors.black,
           onPressed: () {
             handleSubmit(context);
           },
+          style: ButtonStyle(
+          ),
         ),
       ),
     );

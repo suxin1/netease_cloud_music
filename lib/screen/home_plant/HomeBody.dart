@@ -4,7 +4,7 @@ import "package:flutter/material.dart";
 import "package:netease_cloud_music/components/PlanetSummary.dart";
 
 class HomeBody extends StatefulWidget {
-  const HomeBody({Key key}) : super(key: key);
+  const HomeBody({Key? key}) : super(key: key);
 
   @override
   _HomeBodyState createState() => _HomeBodyState();

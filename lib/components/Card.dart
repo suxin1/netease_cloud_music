@@ -4,13 +4,13 @@ import 'package:netease_cloud_music/theme/TextType.dart';
 class Card extends StatelessWidget {
   final Widget child;
   final String title;
-  final TextStyle textStyle;
+  final TextStyle? textStyle;
 
   Card({
-    required Key key,
+    Key? key,
     required this.child,
     required this.title,
-    required this.textStyle,
+    this.textStyle,
   }) : super(key: key);
 
   @override
@@ -43,7 +43,7 @@ class Card extends StatelessWidget {
   Widget _header() {
     return Container(
       height: 44,
-      padding: EdgeInsets.only(
+      padding: const EdgeInsets.only(
         left: 16.0,
         right: 8.0,
       ),
@@ -51,14 +51,12 @@ class Card extends StatelessWidget {
       child: Row(
         children: [
           if (title != null)
-            Container(
-              child: Text(
-                title,
-                style: TextType.smallSecondary,
-              ),
+            Text(
+              title,
+              style: TextType.smallSecondary,
             ),
           Spacer(),
-          IconButton(
+          const IconButton(
             constraints: BoxConstraints(
               maxHeight: 30,
               minHeight: 30,

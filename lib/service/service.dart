@@ -4,7 +4,7 @@ import 'package:netease_cloud_music/service/counter.dart';
 import 'package:netease_cloud_music/service/user/user.dart';
 import "package:netease_cloud_music/service/playlist/playlist.dart";
 
-GetIt service = new GetIt.asNewInstance();
+GetIt service = GetIt.asNewInstance();
 
 void initService() {
   service.registerSingleton<Counter>(Counter());

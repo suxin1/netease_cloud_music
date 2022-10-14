@@ -8,21 +8,21 @@ import "package:fluro/fluro.dart";
 import "package:flutter/material.dart";
 
 Handler loginHandler = Handler(handlerFunc: (
-  BuildContext context,
-  Map<String, List<String>> params,
+  BuildContext? context,
+  Map<String, dynamic> params,
 ) {
   return LoginScreen();
 });
 
 Handler homeHandler = Handler(handlerFunc: (
-  BuildContext context,
+  BuildContext? context,
   Map<String, List<String>> params,
 ) {
   return HomeScreen();
 });
 
 Handler playlistShowHandler = Handler(handlerFunc: (
-  BuildContext context,
+  BuildContext? context,
   Map<String, List<String>> params,
 ) {
   return PlaylistShow();

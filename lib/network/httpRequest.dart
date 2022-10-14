@@ -20,17 +20,17 @@ class HttpRequest {
 
   HttpRequest() {
     Interceptor requestInterceptor = InterceptorsWrapper(
-      onRequest: (RequestOptions options) {
+      onRequest: (RequestOptions options, handler) {
         print("network: 请求拦截");
-        return options;
+        return handler.next(options);
       },
-      onResponse: (Response response) {
+      onResponse: (Response response, handler) {
         print("network: 响应拦截");
-        return response;
+        return handler.next(response);
       },
-      onError: (DioError error) {
+      onError: (DioError error, handler) {
         print("network: 错误拦截");
-        return error;
+        return handler.next(error);
       },
     );
     List<Interceptor> interceptors = [requestInterceptor];
@@ -41,11 +41,11 @@ class HttpRequest {
     String url, {
     data,
     String method = "get",
-    Map<String, dynamic> params,
+    Map<String, dynamic>? params,
   }) async {
     final options = Options(method: method);
     try {
-      Response response = await dio.request<T>(
+      Response<T> response = await dio.request<T>(
         url,
         queryParameters: params,
         options: options,
@@ -82,7 +82,7 @@ class HttpRequest {
 
   Future<Response<T>> get<T>(
     String url, {
-    Map<String, dynamic> params,
+    Map<String, dynamic>? params,
   }) {
     return request(url, method: "get", params: params);
   }
@@ -90,7 +90,7 @@ class HttpRequest {
   Future<Response<T>> post<T>(
     String url, {
     data,
-    Map<String, dynamic> params,
+    Map<String, dynamic>? params,
   }) {
     return request(url, method: "post", data: data, params: params);
   }
@@ -98,7 +98,7 @@ class HttpRequest {
   Future<Response<T>> delete<T>(
     String url, {
     data,
-    Map<String, dynamic> params,
+    Map<String, dynamic>? params,
   }) {
     return request(url, method: "delete", data: data, params: params);
   }
@@ -106,7 +106,7 @@ class HttpRequest {
   Future<Response<T>> put<T>(
     String url, {
     data,
-    Map<String, dynamic> params,
+    Map<String, dynamic>? params,
   }) {
     return request(url, method: "put", data: data, params: params);
   }

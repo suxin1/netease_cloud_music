@@ -9,7 +9,7 @@ class PlaylistCard extends StatelessWidget {
   final GestureTapCallback onTap;
   final GestureTapCallback onMorePressed;
 
-  const PlaylistCard(this.playlist, {this.onTap, this.onMorePressed});
+  const PlaylistCard(this.playlist, {required this.onTap, required this.onMorePressed});
 
   @override
   Widget build(BuildContext context) {
@@ -62,7 +62,7 @@ class PlaylistCard extends StatelessWidget {
           ConstrainedBox(
             constraints: BoxConstraints(maxWidth: 200),
             child: Text(
-              playlist.name,
+              playlist.name as String,
               overflow: TextOverflow.ellipsis,
               style: TextType.common,
             ),
@@ -75,7 +75,7 @@ class PlaylistCard extends StatelessWidget {
                 style: TextType.smallSecondary,
               ),
               Text(
-                ", by ${playlist.creator.nickname}",
+                ", by ${playlist.creator?.nickname}",
                 style: TextType.smallSecondary,
               ),
             ],
@@ -101,7 +101,7 @@ class PlaylistCard extends StatelessWidget {
           width: 50,
           child: ClipRRect(
             borderRadius: BorderRadius.circular(8.0),
-            child: Image.network(playlist.coverImgUrl),
+            child: Image.network(playlist.coverImgUrl as String),
           ),
         ),
       ],
