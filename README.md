@@ -17,7 +17,7 @@ samples, guidance on mobile development, and a full API reference.
 
 
 #### 开发调试准备
-搭建flutter开发环境，[点击查看](https://flutterchina.club/setup-macos/) .
+搭建flutter开发环境，[点击查看](https://flutterchina.club/setup-macos/) . 
 ```
 # 安装依赖包
 flutter pub get
@@ -26,3 +26,9 @@ flutter pub get
 flutter pub run build_runner build
 
 ```
+
+#### 库
+[dio](https://pub.dev/packages/dio)： HTTP 客户端
+[fluro](https://pub.dev/packages/fluro)：程序页面路由
+[get_it](https://pub.dev/packages/get_it)：Service Locator
+[built_value](https://pub.dev/packages/built_value)：JSON serialization
