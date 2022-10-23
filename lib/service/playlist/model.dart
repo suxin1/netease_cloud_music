@@ -26,6 +26,7 @@ abstract class Song implements Built<Song, SongBuilder> {
   static Serializer<Song> get serializer => _$songSerializer;
 }
 
+
 abstract class Playlist implements Built<Playlist, PlaylistBuilder> {
   // Fields
 
@@ -71,6 +72,7 @@ abstract class Playlist implements Built<Playlist, PlaylistBuilder> {
 
   static Serializer<Playlist> get serializer => _$playlistSerializer;
 }
+
 
 // 歌单相应对象
 abstract class Playlists implements Built<Playlists, PlaylistsBuilder> {

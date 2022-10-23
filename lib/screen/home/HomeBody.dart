@@ -70,7 +70,7 @@ class HomeBodyState extends State<HomeBody> {
         children: [
           TextButton(
             onPressed: () {
-              Navigator.pushNamed(context, "/playlistShow");
+              Navigator.pushNamed(context, "/login");
             },
             child: const Text("Click"),
           ),

@@ -3,6 +3,7 @@ import 'package:netease_cloud_music/service/service.dart';
 import 'package:netease_cloud_music/service/user/user.dart';
 import "package:flutter/material.dart";
 import "package:netease_cloud_music/components/Input.dart";
+import "package:netease_cloud_music/theme/default.dart";
 
 class LoginForm extends StatefulWidget {
   const LoginForm({
@@ -88,8 +89,12 @@ class _LoginFormState extends State<LoginForm> {
           onPressed: () {
             handleSubmit(context);
           },
-          style: ButtonStyle(
-          ),
+          style: TextButton.styleFrom(
+            foregroundColor: themeColors["primary"],
+            backgroundColor: themeColors["secondaryLight"],
+            textStyle: const TextStyle(fontSize: 16),
+            shape:RoundedRectangleBorder(borderRadius: BorderRadius.circular(20))
+          )
         ),
       ),
     );

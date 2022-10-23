@@ -44,7 +44,7 @@ class CounterView extends StatelessWidget {
   final counterService = service.get<Counter>();
 
   CounterView({
-    Key key,
+    Key? key,
   }) : super(key: key);
 
   @override
@@ -55,7 +55,7 @@ class CounterView extends StatelessWidget {
         return Column(
           children: [
             Text("${snap.data}"),
-            RaisedButton(
+            TextButton(
               child: Text("plus"),
               onPressed: () => counterService.increment(),
             ),

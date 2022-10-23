@@ -2,7 +2,7 @@ import "package:flutter/material.dart";
 
 class Input extends StatelessWidget {
   final String hintText;
-  final Function? validator;
+  final FormFieldValidator validator;
   final bool obscureText;
   final bool autofocus;
   final IconData icon;

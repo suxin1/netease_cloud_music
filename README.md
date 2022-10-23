@@ -26,6 +26,15 @@ flutter pub get
 flutter pub run build_runner build
 
 ```
+#### 接口测试工具
+测试工具使用开源的 hoppscotch
+```shell
+# 启动 wsl
+bash
+
+# 手动启用 nginx, 访问 http://localhost:8090/
+sudo nginx
+```
 
 #### 库
 [dio](https://pub.dev/packages/dio)： HTTP 客户端
