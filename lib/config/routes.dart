@@ -6,7 +6,7 @@ class Routes {
   static String root = "/";
   static String login = "/login";
   static String personal = "/home";
-  static String playlistShow = "/playlistShow";
+  static String playlistDetail = "/playlist/:id";
 
   static void configureRoutes(FluroRouter router) {
     router.notFoundHandler = Handler(handlerFunc: (
@@ -19,6 +19,6 @@ class Routes {
     router.define(root, handler: homeHandler);
     router.define(login, handler: loginHandler);
     router.define(personal, handler: homeHandler);
-    router.define(playlistShow, handler: playlistShowHandler);
+    router.define(playlistDetail, handler: playlistDetailHandler);
   }
 }

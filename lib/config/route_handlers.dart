@@ -1,6 +1,6 @@
 import "package:netease_cloud_music/screen/login/Login.dart";
 import "package:netease_cloud_music/screen/home/Home.dart";
-import "package:netease_cloud_music/screen/playlistShow/PlaylistShow.dart";
+import "package:netease_cloud_music/screen/playlistDetail/PlaylistDetail.dart";
 
 // import "package:netease_cloud_music/screen/personal/Personal.dart";
 // import "package:flutter/painting.dart";
@@ -9,7 +9,7 @@ import "package:flutter/material.dart";
 
 Handler loginHandler = Handler(handlerFunc: (
   BuildContext? context,
-  Map<String, dynamic> params,
+  Map<String, List<String>> params,
 ) {
   return LoginScreen();
 });
@@ -21,9 +21,9 @@ Handler homeHandler = Handler(handlerFunc: (
   return HomeScreen();
 });
 
-Handler playlistShowHandler = Handler(handlerFunc: (
+Handler playlistDetailHandler = Handler(handlerFunc: (
   BuildContext? context,
-  Map<String, List<String>> params,
+  Map<String, dynamic> params,
 ) {
-  return PlaylistShow();
+  return PlaylistDetail(params["id"][0]);
 });

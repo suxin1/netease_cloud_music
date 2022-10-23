@@ -5,6 +5,7 @@ import "package:netease_cloud_music/service/playlist/model.dart";
 import 'package:netease_cloud_music/theme/TextType.dart';
 import "package:netease_cloud_music/patched/noSplash.dart";
 import "package:netease_cloud_music/components/Ink.dart";
+import "../config/routes.dart";
 
 class PlaylistCard extends StatelessWidget {
   final Playlist playlist;
@@ -15,7 +16,7 @@ class PlaylistCard extends StatelessWidget {
       {required this.onTap, required this.onMorePressed});
 
   void handleCardPress(BuildContext context) {
-    Navigator.pushNamed(context, "/playlistShow");
+    Navigator.pushNamed(context, "/playlist/${playlist.id}");
   }
 
   @override

@@ -1,9 +1,13 @@
 import "package:flutter/material.dart";
 import "package:netease_cloud_music/components/Drawers/CustomDrawer.dart";
 
-class PlaylistShow extends StatelessWidget {
+class PlaylistDetail extends StatelessWidget {
+  final String playlistID;
+  PlaylistDetail(this.playlistID);
+
   @override
   Widget build(BuildContext context) {
+    print(this.playlistID);
     return Scaffold(
       body: CustomDrawer(child: Body()),
     );
