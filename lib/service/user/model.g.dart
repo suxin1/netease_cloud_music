@@ -217,13 +217,6 @@ class _$ProfileSerializer implements StructuredSerializer<Profile> {
         ..add('authority')
         ..add(serializers.serialize(value, specifiedType: const FullType(int)));
     }
-    value = object.avatarDetail;
-    if (value != null) {
-      result
-        ..add('avatarDetail')
-        ..add(serializers.serialize(value,
-            specifiedType: const FullType(String)));
-    }
     value = object.avatarImgId;
     if (value != null) {
       result
@@ -438,10 +431,6 @@ class _$ProfileSerializer implements StructuredSerializer<Profile> {
         case 'authority':
           result.authority = serializers.deserialize(value,
               specifiedType: const FullType(int)) as int?;
-          break;
-        case 'avatarDetail':
-          result.avatarDetail = serializers.deserialize(value,
-              specifiedType: const FullType(String)) as String?;
           break;
         case 'avatarImgId':
           result.avatarImgId = serializers.deserialize(value,
@@ -1059,8 +1048,6 @@ class _$Profile extends Profile {
   @override
   final int? authority;
   @override
-  final String? avatarDetail;
-  @override
   final int? avatarImgId;
   @override
   final String? avatarImgIdStr;
@@ -1126,7 +1113,6 @@ class _$Profile extends Profile {
       {this.accountStatus,
       this.authStatus,
       this.authority,
-      this.avatarDetail,
       this.avatarImgId,
       this.avatarImgIdStr,
       this.avatarImgId_str,
@@ -1172,7 +1158,6 @@ class _$Profile extends Profile {
         accountStatus == other.accountStatus &&
         authStatus == other.authStatus &&
         authority == other.authority &&
-        avatarDetail == other.avatarDetail &&
         avatarImgId == other.avatarImgId &&
         avatarImgIdStr == other.avatarImgIdStr &&
         avatarImgId_str == other.avatarImgId_str &&
@@ -1224,7 +1209,7 @@ class _$Profile extends Profile {
                                                                 $jc(
                                                                     $jc(
                                                                         $jc(
-                                                                            $jc($jc($jc($jc($jc($jc($jc($jc($jc($jc($jc($jc($jc($jc($jc(0, accountStatus.hashCode), authStatus.hashCode), authority.hashCode), avatarDetail.hashCode), avatarImgId.hashCode), avatarImgIdStr.hashCode), avatarImgId_str.hashCode), avatarUrl.hashCode), backgroundImgId.hashCode), backgroundImgIdStr.hashCode), backgroundUrl.hashCode), birthday.hashCode), city.hashCode), defaultAvatar.hashCode),
+                                                                            $jc($jc($jc($jc($jc($jc($jc($jc($jc($jc($jc($jc($jc($jc(0, accountStatus.hashCode), authStatus.hashCode), authority.hashCode), avatarImgId.hashCode), avatarImgIdStr.hashCode), avatarImgId_str.hashCode), avatarUrl.hashCode), backgroundImgId.hashCode), backgroundImgIdStr.hashCode), backgroundUrl.hashCode), birthday.hashCode), city.hashCode), defaultAvatar.hashCode),
                                                                                 description.hashCode),
                                                                             detailDescription.hashCode),
                                                                         djStatus.hashCode),
@@ -1252,7 +1237,6 @@ class _$Profile extends Profile {
           ..add('accountStatus', accountStatus)
           ..add('authStatus', authStatus)
           ..add('authority', authority)
-          ..add('avatarDetail', avatarDetail)
           ..add('avatarImgId', avatarImgId)
           ..add('avatarImgIdStr', avatarImgIdStr)
           ..add('avatarImgId_str', avatarImgId_str)
@@ -1301,10 +1285,6 @@ class ProfileBuilder implements Builder<Profile, ProfileBuilder> {
   int? _authority;
   int? get authority => _$this._authority;
   set authority(int? authority) => _$this._authority = authority;
-
-  String? _avatarDetail;
-  String? get avatarDetail => _$this._avatarDetail;
-  set avatarDetail(String? avatarDetail) => _$this._avatarDetail = avatarDetail;
 
   int? _avatarImgId;
   int? get avatarImgId => _$this._avatarImgId;
@@ -1441,7 +1421,6 @@ class ProfileBuilder implements Builder<Profile, ProfileBuilder> {
       _accountStatus = $v.accountStatus;
       _authStatus = $v.authStatus;
       _authority = $v.authority;
-      _avatarDetail = $v.avatarDetail;
       _avatarImgId = $v.avatarImgId;
       _avatarImgIdStr = $v.avatarImgIdStr;
       _avatarImgId_str = $v.avatarImgId_str;
@@ -1498,7 +1477,6 @@ class ProfileBuilder implements Builder<Profile, ProfileBuilder> {
               accountStatus: accountStatus,
               authStatus: authStatus,
               authority: authority,
-              avatarDetail: avatarDetail,
               avatarImgId: avatarImgId,
               avatarImgIdStr: avatarImgIdStr,
               avatarImgId_str: avatarImgId_str,

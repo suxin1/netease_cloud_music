@@ -1,6 +1,7 @@
 import "dart:ui";
 import "package:flutter/material.dart";
 import "package:netease_cloud_music/components/Ink.dart";
+import 'package:netease_cloud_music/service/artist/model.dart';
 
 import "../../service/service.dart";
 import "../../service/playlist/model.dart";
@@ -23,11 +24,15 @@ class PlaylistDetail extends StatelessWidget {
       body: StreamBuilder(
         stream: playlistService.playlistStream$,
         builder: (context, snapshot) {
-          if(snapshot.data.id == null) {
+          String stateName = snapshot.connectionState.name;
+          if (snapshot.data.id != null) {
+            Playlist playlist = snapshot.data;
+            return Body(playlist);
+          }
+          if (stateName == "active") {
             return Text("加载中");
           }
-          Playlist playlist = snapshot.data;
-          return Body(playlist);
+          return Text("加载错误");
         },
       ),
     );
@@ -36,6 +41,7 @@ class PlaylistDetail extends StatelessWidget {
 
 class Body extends StatelessWidget {
   final Playlist playlist;
+
   Body(this.playlist);
 
   @override
@@ -53,13 +59,16 @@ class Body extends StatelessWidget {
   Widget _thumbnail(BuildContext context) {
     double width = MediaQuery.of(context).size.width;
     return Container(
-      width: width * 0.3,
-      height: width * 0.3,
-      decoration: BoxDecoration(
-        color: Colors.blue,
-        borderRadius: BorderRadius.circular(10),
-      ),
-    );
+        width: width * 0.3,
+        height: width * 0.3,
+        decoration: BoxDecoration(
+          color: Colors.blue,
+          borderRadius: BorderRadius.circular(10),
+        ),
+        child: ClipRRect(
+          borderRadius: BorderRadius.circular(10),
+          child: Image.network(playlist.coverImgUrl as String),
+        ));
   }
 
   Widget _banner(BuildContext context) {
@@ -101,28 +110,18 @@ class Body extends StatelessWidget {
   }
 
   Widget _list() {
+    Map<int, Song> maps = playlist.tracks!.asMap();
+
     return Container(
       child: Column(
-        children: [
-          _song(0),
-          _song(1),
-          _song(2),
-          _song(2),
-          _song(2),
-          _song(2),
-          _song(2),
-          _song(2),
-          _song(2),
-          _song(2),
-          _song(2),
-          _song(2),
-          _song(2),
-        ],
+        children: maps.keys
+            .map((index) => _song(maps[index] as Song, index + 1))
+            .toList(),
       ),
     );
   }
 
-  Widget _song(int index) {
+  Widget _song(Song song, int index) {
     return TapResponse(
       onTap: () {},
       child: Container(
@@ -140,9 +139,10 @@ class Body extends StatelessWidget {
                   Container(
                     padding: EdgeInsets.only(left: Spacing.common),
                     child: Column(
+                      crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
-                        Text("名称", style: TextType.common),
-                        Text("歌手", style: TextType.secondary),
+                        Text(song.name, style: TextType.common),
+                        Text(getArtistStr(song), style: TextType.secondary),
                       ],
                     ),
                   )
@@ -174,6 +174,14 @@ class Body extends StatelessWidget {
         ),
       ),
     );
+  }
+
+  String getArtistStr(Song song) {
+    String re = "";
+    song.ar.forEach((Artist ar) {
+      re = re + (ar.name as String);
+    });
+    return re;
   }
 }
 

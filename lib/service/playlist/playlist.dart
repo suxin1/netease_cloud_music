@@ -8,12 +8,18 @@ import 'package:netease_cloud_music/network/httpRequest.dart';
 import 'package:netease_cloud_music/service/playlist/model.dart';
 
 class PlaylistService {
-  final BehaviorSubject<BuiltList<Playlist>> _playlists = BehaviorSubject.seeded(BuiltList<Playlist>());
+  final BehaviorSubject<BuiltList<Playlist>> _playlists =
+      BehaviorSubject.seeded(BuiltList<Playlist>());
+
   Stream get stream$ => _playlists.stream;
+
   BuiltList<Playlist> get current => _playlists.value;
 
-  final BehaviorSubject<Playlist> _playlist = BehaviorSubject.seeded(Playlist());
+  final BehaviorSubject<Playlist> _playlist =
+      BehaviorSubject.seeded(Playlist());
+
   Stream get playlistStream$ => _playlist.stream;
+
   Playlist? get playlistCurrent => _playlist.value;
 
   PlaylistService();
@@ -33,10 +39,10 @@ class PlaylistService {
     Response response = await request.get("/playlist/detail", params: {
       "id": id,
     });
-
-    Playlist playlist = Playlist.fromJson(response.data);
-
-    _playlist.add(playlist);
+    if (response.statusCode == 200) {
+      Playlist playlist = Playlist.fromMap(response.data["playlist"]);
+      _playlist.add(playlist);
+    }
     return response;
   }
 }

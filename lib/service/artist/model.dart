@@ -9,7 +9,7 @@ part 'model.g.dart';
 abstract class Artist implements Built<Artist, ArtistBuilder> {
   int? get id;
 
-  int? get name;
+  String? get name;
 
   Artist._();
   factory Artist([void Function(ArtistBuilder) updates]) = _$Artist;

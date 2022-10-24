@@ -54,7 +54,7 @@ abstract class Profile implements Built<Profile, ProfileBuilder> {
 
   int? get authority;
 
-  String? get avatarDetail;
+  // String? get avatarDetail;
 
   int? get avatarImgId;
 

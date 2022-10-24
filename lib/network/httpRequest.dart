@@ -2,8 +2,8 @@ import "package:dio/dio.dart";
 import "package:fluttertoast/fluttertoast.dart";
 import "package:flutter/material.dart";
 
-const String BASE_URL = "http://172.16.8.81:3000";
-// const String BASE_URL = "http://192.168.3.110:3000";
+// const String BASE_URL = "http://172.16.8.81:3000";
+const String BASE_URL = "http://192.168.3.110:3000";
 const int TIMEOUT = 5000;
 
 class HttpConfig {

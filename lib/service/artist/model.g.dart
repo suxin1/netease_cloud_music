@@ -29,7 +29,8 @@ class _$ArtistSerializer implements StructuredSerializer<Artist> {
     if (value != null) {
       result
         ..add('name')
-        ..add(serializers.serialize(value, specifiedType: const FullType(int)));
+        ..add(serializers.serialize(value,
+            specifiedType: const FullType(String)));
     }
     return result;
   }
@@ -51,7 +52,7 @@ class _$ArtistSerializer implements StructuredSerializer<Artist> {
           break;
         case 'name':
           result.name = serializers.deserialize(value,
-              specifiedType: const FullType(int)) as int?;
+              specifiedType: const FullType(String)) as String?;
           break;
       }
     }
@@ -64,7 +65,7 @@ class _$Artist extends Artist {
   @override
   final int? id;
   @override
-  final int? name;
+  final String? name;
 
   factory _$Artist([void Function(ArtistBuilder)? updates]) =>
       (new ArtistBuilder()..update(updates))._build();
@@ -105,9 +106,9 @@ class ArtistBuilder implements Builder<Artist, ArtistBuilder> {
   int? get id => _$this._id;
   set id(int? id) => _$this._id = id;
 
-  int? _name;
-  int? get name => _$this._name;
-  set name(int? name) => _$this._name = name;
+  String? _name;
+  String? get name => _$this._name;
+  set name(String? name) => _$this._name = name;
 
   ArtistBuilder();
 

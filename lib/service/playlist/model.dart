@@ -71,6 +71,10 @@ abstract class Playlist implements Built<Playlist, PlaylistBuilder> {
     return serializers.deserializeWith(Playlist.serializer, json.decode(jsonString))!;
   }
 
+  factory Playlist.fromMap(Map<String, dynamic> data) {
+    return serializers.deserializeWith(Playlist.serializer, data)!;
+  }
+
   static Serializer<Playlist> get serializer => _$playlistSerializer;
 }
 

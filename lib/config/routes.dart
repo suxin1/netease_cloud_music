@@ -10,10 +10,12 @@ class Routes {
 
   static String format(String path, Map<String, dynamic> params) {
     // var keys = params.keys;
+    String newPath = path;
+
     params.forEach((key, value) {
-      path.replaceFirst(":$key", value.toString());
+      newPath = newPath.replaceFirst(":$key", value.toString());
     });
-    return path;
+    return newPath;
   }
 
   static void configureRoutes(FluroRouter router) {
