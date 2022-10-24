@@ -29,7 +29,7 @@ class PlaylistService {
     return response;
   }
 
-  Future<Response<dynamic>> detail(int id) async {
+  Future<Response<dynamic>> detail(String id) async {
     Response response = await request.get("/playlist/detail", params: {
       "id": id,
     });

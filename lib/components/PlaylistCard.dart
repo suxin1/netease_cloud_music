@@ -2,17 +2,18 @@
 
 import "package:flutter/material.dart";
 import "package:netease_cloud_music/service/playlist/model.dart";
-import 'package:netease_cloud_music/theme/TextType.dart';
 import "package:netease_cloud_music/patched/noSplash.dart";
 import "package:netease_cloud_music/components/Ink.dart";
 
+import 'package:netease_cloud_music/theme/TextType.dart';
+
 class PlaylistCard extends StatelessWidget {
   final Playlist playlist;
-  final GestureTapCallback onTap;
-  final GestureTapCallback onMorePressed;
+  final Function? onTap;
+  final GestureTapCallback? onMorePressed;
 
   const PlaylistCard(this.playlist,
-      {required this.onTap, required this.onMorePressed});
+      {this.onTap, this.onMorePressed});
 
   void handleCardPress(BuildContext context) {
     Navigator.pushNamed(context, "/playlistShow");
@@ -22,7 +23,7 @@ class PlaylistCard extends StatelessWidget {
   Widget build(BuildContext context) {
     return TapResponse(
       onTap: () {
-        handleCardPress(context);
+        onTap!(playlist.id);
       },
       child: Container(
         // color: Colors.blue,
@@ -44,7 +45,7 @@ class PlaylistCard extends StatelessWidget {
 
   Widget _button() {
     return TapResponse(
-      onTap: onMorePressed,
+      onTap: () {},
       child: Container(
         constraints: const BoxConstraints(
           maxHeight: 30,
@@ -96,6 +97,7 @@ class PlaylistCard extends StatelessWidget {
   }
 
   Widget _thumbnail() {
+    print(playlist.coverImgUrl);
     return Stack(
       alignment: FractionalOffset(.5, -0.5),
       children: [

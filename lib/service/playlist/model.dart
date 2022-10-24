@@ -19,6 +19,7 @@ abstract class Song implements Built<Song, SongBuilder> {
   int get id;
   int get pst;
   int get t;
+
   BuiltList<Artist> get ar;
 
   Song._();

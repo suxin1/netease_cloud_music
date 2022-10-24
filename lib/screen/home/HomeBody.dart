@@ -14,6 +14,8 @@ import "package:netease_cloud_music/service/user/user.dart";
 import "package:netease_cloud_music/service/playlist/playlist.dart";
 import "package:netease_cloud_music/service/playlist/model.dart";
 
+import "../../config/routes.dart";
+
 class HomeBody extends StatefulWidget {
   const HomeBody({Key? key}) : super(key: key);
 
@@ -31,6 +33,11 @@ class HomeBodyState extends State<HomeBody> {
     if (userService.current.account.id != null) {
       playlistService.get(userService.current.account.id as int);
     }
+  }
+
+  void _onCardPress(int id) {
+    String path = Routes.format(Routes.playlistDetail, {"id": id});
+    Navigator.pushNamed(context, path);
   }
 
   @override
@@ -64,75 +71,61 @@ class HomeBodyState extends State<HomeBody> {
         collectedList.add(item);
       }
     }
+
     return ScrollConfiguration(
       behavior: AppScrollBehavior(),
       child: ListView(
         children: [
+          _createdList(createdList),
+          _collectedList(collectedList),
           TextButton(
             onPressed: () {
               Navigator.pushNamed(context, "/login");
             },
-            child: const Text("Click"),
+            child: const Text("Login"),
           ),
-          _created(createdList),
-          _collected(collectedList),
         ],
       ),
     );
   }
 
-  /// 这里用了 ListView 里面的 ListView.Builder 来创建列表（使用迭代回调 itemBuilder
-  /// 函数根据数据动态渲染列表视图）。但嵌套 ListView 会报错，目前解决方式是提供
-  /// NeverScrollableScrollPhysics physics 参数来禁止嵌套 ListView 的滑动。
-  Widget _created(List<Playlist> list) {
+  Widget _createdList(List<Playlist> list) {
     return Card(
-      title: "创建歌单（${list.length}个）",
-      child: ListView.builder(
-        physics: const NeverScrollableScrollPhysics(),
-        scrollDirection: Axis.vertical,
-        shrinkWrap: true,
-        itemCount: list.length,
-        itemBuilder: (_, int index) => PlaylistCard(
-          list[index],
-          onTap: () => {print("topped")},
-          onMorePressed: () => {},
-        ),
-      ),
-    );
-  }
-
-  Widget _collected(List<Playlist> list) {
-    return Card(
-        title: "收藏歌单（${list.length}个）",
-        child: ListView.builder(
-          physics: NeverScrollableScrollPhysics(),
-          scrollDirection: Axis.vertical,
-          shrinkWrap: true,
-          itemCount: list.length,
-          itemBuilder: (_, int index) => PlaylistCard(
-            list[index],
-            onTap: () => {print("tapped")},
-            onMorePressed: () => {print("more pressed")},
-          ),
+        title: "创建歌单（${list.length}个）",
+        child: Column(
+          children: list
+              .map((item) => PlaylistCard(item, onTap: _onCardPress))
+              .toList(),
         ));
   }
 
-  Widget scrollView(BuiltList<Playlist> list) {
-    return Container(
-      child: CustomScrollView(
-        slivers: [
-          SliverPadding(
-            padding: EdgeInsets.symmetric(vertical: 16.0),
-            sliver: SliverFixedExtentList(
-              itemExtent: 152.0,
-              delegate: SliverChildBuilderDelegate(
-                (_, index) => PlaylistCard(list[index], onTap: () => {}, onMorePressed: () => {}),
-                childCount: list.length,
-              ),
-            ),
-          ),
-        ],
-      ),
-    );
+  Widget _collectedList(List<Playlist> list) {
+    return Card(
+        title: "收藏歌单（${list.length}个）",
+        child: Column(
+          children: list
+              .map((item) => PlaylistCard(item, onTap: _onCardPress))
+              .toList(),
+        ));
   }
+
+// Widget scrollView(BuiltList<Playlist> list) {
+//   return Container(
+//     child: CustomScrollView(
+//       slivers: [
+//         SliverPadding(
+//           padding: EdgeInsets.symmetric(vertical: 16.0),
+//           sliver: SliverFixedExtentList(
+//             itemExtent: 152.0,
+//             delegate: SliverChildBuilderDelegate(
+//               (_, index) => PlaylistCard(list[index],
+//                   onTap: () => {}, onMorePressed: () => {}),
+//               childCount: list.length,
+//             ),
+//           ),
+//         ),
+//       ],
+//     ),
+//   );
+// }
 }

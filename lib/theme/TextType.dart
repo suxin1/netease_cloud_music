@@ -19,11 +19,13 @@ class TextType {
   static final baseTextStyle = const TextStyle(
       fontFamily: 'Poppins'
   );
+
   static final smallPrimary = common.copyWith(
     fontSize: 12.0,
   );
+
   static final smallSecondary = smallPrimary.copyWith(
-    color: Color(0xFFAAAAAA)
+    color: Color(0xFFAAAAAA),
   );
 
   static final common = baseTextStyle.copyWith(
@@ -31,16 +33,25 @@ class TextType {
       fontSize: 14.0,
       fontWeight: FontWeight.w400
   );
+
+  static final secondary = baseTextStyle.copyWith(
+    color: Colors.black54,
+    fontSize: 12.0,
+    fontWeight: FontWeight.w300,
+  );
+
   static final title = baseTextStyle.copyWith(
       color: Colors.white,
       fontSize: 18.0,
-      fontWeight: FontWeight.w600
+      fontWeight: FontWeight.w500
   );
+
   static final header = baseTextStyle.copyWith(
       color: Colors.white,
       fontSize: 20.0,
       fontWeight: FontWeight.w500
   );
+
   static final subtitle = baseTextStyle.copyWith(
     color: Color(0xFFAAAAAA),
   );
