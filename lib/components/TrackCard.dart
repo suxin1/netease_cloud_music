@@ -87,9 +87,12 @@ class TrackCard extends StatelessWidget {
 
   String getArtistStr(Track track) {
     String re = "";
-    track.ar.forEach((Artist ar) {
-      re = re + (ar.name as String);
-    });
+    for (int i=0; i < track.ar.length; i ++) {
+      Artist ar = track.ar[i];
+      bool last = i == (track.ar.length - 1);
+      String suffix = last ?"":"，";
+      re = re + (ar.name as String) + suffix;
+    }
     return re;
   }
 }

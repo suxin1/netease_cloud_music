@@ -45,7 +45,9 @@ class Body extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Container(
+    return MediaQuery.removePadding( // 移除 ListView 顶部 padding
+      context: context,
+      removeTop: true,
       child: ListView(
         children: [
           _bannerContainer(context),
@@ -57,12 +59,15 @@ class Body extends StatelessWidget {
 
   Widget _bannerContainer(BuildContext context) {
     double width = MediaQuery.of(context).size.width;
-    return Container(
-      width: width,
-      height: MediaQuery.of(context).size.height * 0.3,
-      decoration: BoxDecoration(color: Colors.black45),
-      // padding: EdgeInsets.only(left: 20),
-      child: _bannerContent(context),
+    return SafeArea(
+      top: false,
+      child: Container(
+        width: width,
+        height: MediaQuery.of(context).size.height * 0.3,
+        decoration: BoxDecoration(color: Colors.black45),
+        // padding: EdgeInsets.only(left: 20),
+        child: _bannerContent(context),
+      ),
     );
   }
 
@@ -71,15 +76,18 @@ class Body extends StatelessWidget {
       children: [
         ConstrainedBox(
           constraints: const BoxConstraints.expand(),
-          child: Image.network(playlist.coverImgUrl as String,
-              errorBuilder: (a, b, c) => Container(color: Colors.red)),
+          child: Image.network(
+            playlist.coverImgUrl as String,
+            errorBuilder: (a, b, c) => Container(color: Colors.red),
+            fit: BoxFit.cover,
+          ),
         ),
         Center(
           child: ClipRect(
             child: BackdropFilter(
-              filter: ImageFilter.blur(sigmaX: 6.0, sigmaY: 6.0),
+              filter: ImageFilter.blur(sigmaX: 30.0, sigmaY: 30.0),
               child: Opacity(
-                opacity: 0.8,
+                opacity: 0.6,
                 child: ConstrainedBox(
                   constraints: BoxConstraints.expand(),
                   child: Container(
@@ -107,11 +115,11 @@ class Body extends StatelessWidget {
         height: width * 0.3,
         decoration: BoxDecoration(
           color: Colors.blue,
-          borderRadius: BorderRadius.circular(10),
+          borderRadius: BorderRadius.circular(15),
         ),
         child: ClipRRect(
-          borderRadius: BorderRadius.circular(10),
-          child: Image.network(playlist.coverImgUrl as String),
+          borderRadius: BorderRadius.circular(15),
+          child: Image.network(playlist.coverImgUrl as String, fit: BoxFit.cover,),
         ));
   }
 
