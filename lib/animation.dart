@@ -44,8 +44,8 @@ class SlideUpTransition extends PageRouteBuilder {
 }
 
 class EnterExitRoute extends PageRouteBuilder {
-  final Widget enterPage;
-  final Widget exitPage;
+  final Widget? enterPage;
+  final Widget? exitPage;
 
   EnterExitRoute({this.exitPage, this.enterPage})
       : super(
@@ -54,7 +54,7 @@ class EnterExitRoute extends PageRouteBuilder {
             Animation<double> animation,
             Animation<double> secondaryAnimation,
           ) =>
-              enterPage,
+          enterPage as Widget,
           transitionsBuilder: (
             BuildContext context,
             Animation<double> animation,

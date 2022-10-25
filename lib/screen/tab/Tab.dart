@@ -28,7 +28,7 @@ final List<Tab> tabs = <Tab>[
 
 /// This is the stateless widget that the main application instantiates.
 class MyStatelessWidget extends StatelessWidget {
-  MyStatelessWidget({Key key}) : super(key: key);
+  MyStatelessWidget({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -37,7 +37,7 @@ class MyStatelessWidget extends StatelessWidget {
       // The Builder widget is used to have a different BuildContext to access
       // closest DefaultTabController.
       child: Builder(builder: (BuildContext context) {
-        final TabController tabController = DefaultTabController.of(context);
+        final TabController tabController = DefaultTabController.of(context) as TabController;
         tabController.addListener(() {
           if (!tabController.indexIsChanging) {
             // Your code goes here.

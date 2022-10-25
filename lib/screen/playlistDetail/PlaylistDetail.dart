@@ -1,13 +1,12 @@
 import "dart:ui";
 import "package:flutter/material.dart";
-import "package:netease_cloud_music/components/Ink.dart";
-import 'package:netease_cloud_music/service/artist/model.dart';
+
+import "../../components/TrackCard.dart";
 
 import "../../service/service.dart";
 import "../../service/playlist/model.dart";
 import "../../service/playlist/playlist.dart";
 import "../../theme/TextType.dart";
-import "../../theme/default.dart";
 
 class PlaylistDetail extends StatelessWidget {
   final String playlistID;
@@ -49,10 +48,55 @@ class Body extends StatelessWidget {
     return Container(
       child: ListView(
         children: [
-          _banner(context),
+          _bannerContainer(context),
           _list(),
         ],
       ),
+    );
+  }
+
+  Widget _bannerContainer(BuildContext context) {
+    double width = MediaQuery.of(context).size.width;
+    return Container(
+      width: width,
+      height: MediaQuery.of(context).size.height * 0.3,
+      decoration: BoxDecoration(color: Colors.black45),
+      // padding: EdgeInsets.only(left: 20),
+      child: _bannerContent(context),
+    );
+  }
+
+  Widget _bannerContent(BuildContext context) {
+    return Stack(
+      children: [
+        ConstrainedBox(
+          constraints: const BoxConstraints.expand(),
+          child: Image.network(playlist.coverImgUrl as String,
+              errorBuilder: (a, b, c) => Container(color: Colors.red)),
+        ),
+        Center(
+          child: ClipRect(
+            child: BackdropFilter(
+              filter: ImageFilter.blur(sigmaX: 6.0, sigmaY: 6.0),
+              child: Opacity(
+                opacity: 0.8,
+                child: ConstrainedBox(
+                  constraints: BoxConstraints.expand(),
+                  child: Container(
+                    color: Colors.black,
+                  ),
+                ),
+              ),
+            ),
+          ),
+        ),
+        Center(
+          child: Container(
+            padding: const EdgeInsets.only(left: 20),
+            child: _middle(context),
+          ),
+        ),
+      ],
     );
   }
 
@@ -71,117 +115,48 @@ class Body extends StatelessWidget {
         ));
   }
 
-  Widget _banner(BuildContext context) {
+  Widget _middle(BuildContext context) {
     double width = MediaQuery.of(context).size.width;
-    return Container(
-        width: width,
-        height: MediaQuery.of(context).size.height * 0.3,
-        decoration: BoxDecoration(color: Colors.red),
-        padding: EdgeInsets.only(left: 20),
-        child: Row(
-          crossAxisAlignment: CrossAxisAlignment.center,
-          children: [
-            _thumbnail(context),
-            Container(
-              color: Colors.amber,
-              height: width * 0.3,
-              width: width * 0.7 - 20,
-              padding: EdgeInsets.all(10),
-              child: Column(
-                crossAxisAlignment: CrossAxisAlignment.start,
-                mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                children: [
-                  ConstrainedBox(
-                    constraints: BoxConstraints(maxWidth: width * 0.7),
-                    child: Text(
-                      playlist.name as String,
-                      style: TextType.title,
-                    ),
-                  ),
-                  Text(
-                    "简介",
-                    style: TextType.smallSecondary,
-                  ),
-                ],
+    return Row(
+      crossAxisAlignment: CrossAxisAlignment.center,
+      children: [
+        _thumbnail(context),
+        Container(
+          height: width * 0.3,
+          width: width * 0.7 - 20,
+          padding: EdgeInsets.all(10),
+          child: Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+            children: [
+              ConstrainedBox(
+                constraints: BoxConstraints(maxWidth: width * 0.7),
+                child: Text(
+                  playlist.name as String,
+                  style: TextType.title,
+                ),
               ),
-            )
-          ],
-        ));
+              Text(
+                "简介",
+                style: TextType.smallSecondary,
+              ),
+            ],
+          ),
+        )
+      ],
+    );
   }
 
   Widget _list() {
-    Map<int, Song> maps = playlist.tracks!.asMap();
+    Map<int, dynamic> maps = playlist.tracks!.asMap();
 
     return Container(
       child: Column(
         children: maps.keys
-            .map((index) => _song(maps[index] as Song, index + 1))
+            .map((index) => TrackCard(maps[index] as Track, index + 1))
             .toList(),
       ),
     );
-  }
-
-  Widget _song(Song song, int index) {
-    return TapResponse(
-      onTap: () {},
-      child: Container(
-        padding: EdgeInsets.all(Spacing.common),
-        child: Row(
-          mainAxisAlignment: MainAxisAlignment.spaceBetween,
-          children: [
-            Container(
-              child: Row(
-                children: [
-                  Text(
-                    index.toString(),
-                    style: TextType.secondary,
-                  ),
-                  Container(
-                    padding: EdgeInsets.only(left: Spacing.common),
-                    child: Column(
-                      crossAxisAlignment: CrossAxisAlignment.start,
-                      children: [
-                        Text(song.name, style: TextType.common),
-                        Text(getArtistStr(song), style: TextType.secondary),
-                      ],
-                    ),
-                  )
-                ],
-              ),
-            ),
-            _button(),
-          ],
-        ),
-      ),
-    );
-  }
-
-  Widget _button() {
-    return TapResponse(
-      onTap: () {},
-      child: Container(
-        constraints: const BoxConstraints(
-          maxHeight: 30,
-          minHeight: 30,
-          minWidth: 30,
-          maxWidth: 30,
-        ),
-        padding: const EdgeInsets.all(0),
-        child: const Icon(
-          Icons.more_vert,
-          color: Colors.grey,
-          size: 20,
-        ),
-      ),
-    );
-  }
-
-  String getArtistStr(Song song) {
-    String re = "";
-    song.ar.forEach((Artist ar) {
-      re = re + (ar.name as String);
-    });
-    return re;
   }
 }
 

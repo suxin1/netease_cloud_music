@@ -21,7 +21,7 @@ final ThemeData kAndroidTheme = ThemeData(
 
 class FriendlyChatApp extends StatelessWidget {
   const FriendlyChatApp({
-    Key key,
+    Key? key,
   }) : super(key: key); // 这里省略了构建函数体。
 
   @override
@@ -40,7 +40,7 @@ class ChatMessage extends StatelessWidget {
   final String text;
   final AnimationController animationController;
 
-  ChatMessage({this.text, this.animationController});
+  ChatMessage({required this.text, required this.animationController});
 
   @override
   Widget build(BuildContext context) {
@@ -83,7 +83,7 @@ class ChatMessage extends StatelessWidget {
 
 class ChatScreen extends StatefulWidget {
   const ChatScreen({
-    Key key,
+    Key? key,
   }) : super(key: key);
 
   @override
@@ -138,7 +138,7 @@ class _ChatScreenState extends State<ChatScreen> with TickerProviderStateMixin {
       body: Container(
         decoration: Theme.of(context).platform == TargetPlatform.iOS
             ? BoxDecoration(
-                border: Border(top: BorderSide(color: Colors.grey[200])),
+                border: Border(top: BorderSide(color: Colors.grey[200] as Color)),
               )
             : null,
         child: Column(
