@@ -11,8 +11,7 @@ class PlaylistCard extends StatelessWidget {
   final Function? onTap;
   final GestureTapCallback? onMorePressed;
 
-  const PlaylistCard(this.playlist,
-      {this.onTap, this.onMorePressed});
+  const PlaylistCard(this.playlist, {this.onTap, this.onMorePressed});
 
   void handleCardPress(BuildContext context) {
     Navigator.pushNamed(context, "/playlistShow");

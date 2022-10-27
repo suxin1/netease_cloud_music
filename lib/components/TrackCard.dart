@@ -34,29 +34,27 @@ class TrackCard extends StatelessWidget {
     return TapResponse(
       onTap: () {},
       child: Container(
-        padding: EdgeInsets.all(Spacing.common),
+        padding: const EdgeInsets.all(Spacing.common),
         child: Row(
           mainAxisAlignment: MainAxisAlignment.spaceBetween,
           children: [
-            Container(
-              child: Row(
-                children: [
-                  Text(
-                    index.toString(),
-                    style: TextType.secondary,
+            Row(
+              children: [
+                Text(
+                  index.toString(),
+                  style: TextType.secondary,
+                ),
+                Container(
+                  padding: const EdgeInsets.only(left: Spacing.common),
+                  child: Column(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: [
+                      Text(track.name, style: TextType.common),
+                      Text(getArtistStr(track), style: TextType.secondary),
+                    ],
                   ),
-                  Container(
-                    padding: const EdgeInsets.only(left: Spacing.common),
-                    child: Column(
-                      crossAxisAlignment: CrossAxisAlignment.start,
-                      children: [
-                        Text(track.name, style: TextType.common),
-                        Text(getArtistStr(track), style: TextType.secondary),
-                      ],
-                    ),
-                  )
-                ],
-              ),
+                )
+              ],
             ),
             _button(),
           ],
