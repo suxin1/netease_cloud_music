@@ -6,10 +6,13 @@ import 'package:netease_cloud_music/service/user/user.dart';
 
 import 'app.dart';
 
+import './bloc/main.dart' as bloc;
+
 void main() {
   WidgetsFlutterBinding.ensureInitialized();
-  initService();
-  runAppAsync();
+  bloc.main();
+  // initService();
+  // runAppAsync();
   // final user = service.get<User>();
   // Future.delayed(Duration(seconds: 1), () {
   //   user.login(

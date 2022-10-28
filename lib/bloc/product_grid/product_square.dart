@@ -2,10 +2,10 @@ import 'dart:async';
 
 import 'package:flutter/material.dart';
 import 'package:meta/meta.dart';
-import 'package:reactive_exploration/common/models/cart_item.dart';
-import 'package:reactive_exploration/common/models/product.dart';
-import 'package:reactive_exploration/common/utils/is_dark.dart';
-import 'package:reactive_exploration/src/bloc_complex/product_grid/product_square_bloc.dart';
+import '../model/cart_item.dart';
+import '../model/product.dart';
+import '../utils/is_dark.dart';
+import '../product_grid/product_square_bloc.dart';
 
 /// In this version of [ProductSquare], the widget must be a [StatefulWidget]
 /// because it has a [ProductSquareBloc] that it needs to dispose of
@@ -20,12 +20,12 @@ class ProductSquare extends StatefulWidget {
   /// This will be piped into this widget's [ProductSquareBloc].
   final Stream<List<CartItem>> itemsStream;
 
-  final GestureTapCallback onTap;
+  final GestureTapCallback? onTap;
 
   ProductSquare({
-    Key key,
-    @required this.product,
-    @required this.itemsStream,
+    Key? key,
+    required this.product,
+    required this.itemsStream,
     this.onTap,
   }) : super(key: key);
 
@@ -39,11 +39,11 @@ class _ProductSquareState extends State<ProductSquare> {
   /// In our sample this might be overkill, but in a real app the widget will
   /// get much more complicated (fetching images, availability, favorite status,
   /// etc.).
-  ProductSquareBloc _bloc;
+  ProductSquareBloc? _bloc;
 
   /// Because we're piping an output of one BLoC into an input of another,
   /// we need to hold the subscription object in order to cancel it later.
-  StreamSubscription _subscription;
+  StreamSubscription? _subscription;
 
   @override
   Widget build(BuildContext context) {
@@ -53,9 +53,9 @@ class _ProductSquareState extends State<ProductSquare> {
         onTap: widget.onTap,
         child: Center(
           child: StreamBuilder<bool>(
-              stream: _bloc.isInCart,
-              initialData: _bloc.isInCart.value,
-              builder: (context, snapshot) => _createText(snapshot.data)),
+              stream: _bloc!.isInCart,
+              initialData: _bloc!.isInCart.value,
+              builder: (context, snapshot) => _createText(snapshot.data as bool)),
         ),
       ),
     );
@@ -91,7 +91,7 @@ class _ProductSquareState extends State<ProductSquare> {
   /// into its [ProductSquareBloc.cartItems] input.
   void _createBloc() {
     _bloc = ProductSquareBloc(widget.product);
-    _subscription = widget.itemsStream.listen(_bloc.cartItems.add);
+    _subscription = widget.itemsStream.listen(_bloc!.cartItems.add);
   }
 
   /// A helper method that only builds the text of the [ProductSquare].
@@ -108,7 +108,7 @@ class _ProductSquareState extends State<ProductSquare> {
   }
 
   void _disposeBloc() {
-    _subscription.cancel();
-    _bloc.dispose();
+    _subscription!.cancel();
+    _bloc!.dispose();
   }
 }

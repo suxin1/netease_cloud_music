@@ -1,9 +1,9 @@
 import 'dart:math';
 
 import 'package:flutter/widgets.dart';
-import 'package:reactive_exploration/src/bloc_complex/catalog/catalog_slice.dart';
-import 'package:reactive_exploration/src/bloc_complex/services/catalog.dart';
-import 'package:reactive_exploration/src/bloc_complex/services/catalog_page.dart';
+import './catalog_slice.dart';
+import '../services/catalog.dart';
+import '../services/catalog_page.dart';
 import 'package:rxdart/rxdart.dart';
 
 /// This component encapsulates the logic of fetching products from
@@ -25,7 +25,7 @@ class CatalogBloc {
   final _pagesBeingRequested = Set<int>();
 
   final _sliceSubject =
-      BehaviorSubject<CatalogSlice>(seedValue: CatalogSlice.empty());
+      BehaviorSubject<CatalogSlice>.seeded(CatalogSlice.empty());
 
   final CatalogService _catalogService;
 
@@ -48,7 +48,7 @@ class CatalogBloc {
 
   /// The currently available data, as a slice of the (potentially infinite)
   /// catalog.
-  ValueObservable<CatalogSlice> get slice => _sliceSubject.stream;
+  ValueStream<CatalogSlice> get slice => _sliceSubject.stream;
 
   /// Outputs the [CatalogPage.startIndex] given an arbitrary index of
   /// a product.
@@ -106,9 +106,9 @@ class CatalogProvider extends InheritedWidget {
   final CatalogBloc catalogBloc;
 
   CatalogProvider({
-    Key key,
-    @required CatalogBloc catalog,
-    Widget child,
+    Key? key,
+    required CatalogBloc catalog,
+    required Widget child,
   })  : assert(catalog != null),
         catalogBloc = catalog,
         super(key: key, child: child);
@@ -117,6 +117,6 @@ class CatalogProvider extends InheritedWidget {
   bool updateShouldNotify(InheritedWidget oldWidget) => true;
 
   static CatalogBloc of(BuildContext context) =>
-      (context.inheritFromWidgetOfExactType(CatalogProvider) as CatalogProvider)
+      (context.dependOnInheritedWidgetOfExactType<CatalogProvider>() as CatalogProvider)
           .catalogBloc;
 }

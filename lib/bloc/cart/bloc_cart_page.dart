@@ -21,12 +21,12 @@ class BlocCartPage extends StatelessWidget {
             if (snapshot.data?.isEmpty ?? true) {
               return Center(
                   child: Text('Empty',
-                      style: Theme.of(context).textTheme.display1));
+                      style: Theme.of(context).textTheme.displaySmall));
             }
 
             return ListView(
                 children:
-                    snapshot.data.map((item) => ItemTile(item: item)).toList());
+                    snapshot.data!.map((item) => ItemTile(item: item)).toList());
           }),
     );
   }

@@ -2,8 +2,8 @@ import 'dart:async';
 import 'dart:math';
 import 'dart:ui';
 
-import 'package:reactive_exploration/common/models/product.dart';
-import 'package:reactive_exploration/src/bloc_complex/services/catalog_page.dart';
+import '../model/product.dart';
+import '../services/catalog_page.dart';
 
 /// A class that mimics a network-backed service.
 class CatalogService {

@@ -1,12 +1,12 @@
 import 'package:flutter/material.dart';
-import 'package:reactive_exploration/common/widgets/cart_button.dart';
-import 'package:reactive_exploration/common/widgets/theme.dart';
-import 'package:reactive_exploration/src/bloc_complex/cart/bloc_cart_page.dart';
-import 'package:reactive_exploration/src/bloc_complex/cart/cart_bloc.dart';
-import 'package:reactive_exploration/src/bloc_complex/cart/cart_provider.dart';
-import 'package:reactive_exploration/src/bloc_complex/catalog/catalog_bloc.dart';
-import 'package:reactive_exploration/src/bloc_complex/product_grid/product_grid.dart';
-import 'package:reactive_exploration/src/bloc_complex/services/catalog.dart';
+import './widgets/cart_button.dart';
+import './widgets/theme.dart';
+import './cart/bloc_cart_page.dart';
+import './cart/cart_bloc.dart';
+import './cart/cart_provider.dart';
+import './catalog/catalog_bloc.dart';
+import './product_grid/product_grid.dart';
+import './services/catalog.dart';
 
 void main() {
   // Initiate services.
@@ -62,7 +62,7 @@ class MyHomePage extends StatelessWidget {
             stream: cartBloc.itemCount,
             initialData: cartBloc.itemCount.value,
             builder: (context, snapshot) => CartButton(
-                  itemCount: snapshot.data,
+                  itemCount: snapshot.data as int,
                   onPressed: () {
                     Navigator.of(context).pushNamed(BlocCartPage.routeName);
                   },

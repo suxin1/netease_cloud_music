@@ -50,14 +50,14 @@ class CartButtonState extends State<CartButton>
 
     return IconButton(
         icon: Stack(
-          overflow: Overflow.visible,
+          // overflow: Overflow.visible,
           children: [
             Icon(Icons.shopping_cart),
             Positioned(
               top: -8.0,
               right: -3.0,
               child: SlideTransition(
-                position: _badgePositionTween.animate(_animation),
+                position: _badgePositionTween.animate(_animation as Animation<double>),
                 child: Material(
                     type: MaterialType.circle,
                     elevation: 2.0,
@@ -83,15 +83,15 @@ class CartButtonState extends State<CartButton>
   @override
   void didUpdateWidget(CartButton oldWidget) {
     if (widget.itemCount != oldWidget.itemCount) {
-      _animationController.reset();
-      _animationController.forward();
+      _animationController?.reset();
+      _animationController?.forward();
     }
     super.didUpdateWidget(oldWidget);
   }
 
   @override
   void dispose() {
-    _animationController.dispose();
+    _animationController?.dispose();
     super.dispose();
   }
 
@@ -103,7 +103,7 @@ class CartButtonState extends State<CartButton>
       vsync: this,
     );
     _animation =
-        CurvedAnimation(parent: _animationController, curve: Curves.elasticOut);
-    _animationController.forward();
+        CurvedAnimation(parent: _animationController as Animation<double>, curve: Curves.elasticOut);
+    _animationController?.forward();
   }
 }

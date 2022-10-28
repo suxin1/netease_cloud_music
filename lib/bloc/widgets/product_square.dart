@@ -1,16 +1,16 @@
 import 'package:flutter/material.dart';
 import 'package:meta/meta.dart';
-import 'package:reactive_exploration/common/models/product.dart';
-import 'package:reactive_exploration/common/utils/is_dark.dart';
+import '../model/product.dart';
+import '../utils/is_dark.dart';
 
 class ProductSquare extends StatelessWidget {
   final Product product;
 
-  final GestureTapCallback onTap;
+  final GestureTapCallback? onTap;
 
   ProductSquare({
-    Key key,
-    @required this.product,
+    Key? key,
+    required this.product,
     this.onTap,
   }) : super(key: key);
 

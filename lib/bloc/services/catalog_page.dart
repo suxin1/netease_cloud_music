@@ -1,6 +1,6 @@
 import 'dart:collection';
 
-import 'package:reactive_exploration/common/models/product.dart';
+import '../model/product.dart';
 
 /// A page of catalog items fetched from network.
 ///

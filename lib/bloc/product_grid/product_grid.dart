@@ -1,10 +1,10 @@
 import 'package:flutter/material.dart';
 
-import 'package:reactive_exploration/src/bloc_complex/cart/cart_bloc.dart';
-import 'package:reactive_exploration/src/bloc_complex/cart/cart_provider.dart';
-import 'package:reactive_exploration/src/bloc_complex/catalog/catalog_bloc.dart';
-import 'package:reactive_exploration/src/bloc_complex/catalog/catalog_slice.dart';
-import 'package:reactive_exploration/src/bloc_complex/product_grid/product_square.dart';
+import '../cart/cart_bloc.dart';
+import '../cart/cart_provider.dart';
+import '../catalog/catalog_bloc.dart';
+import '../catalog/catalog_slice.dart';
+import '../product_grid/product_square.dart';
 
 /// Displays an infinite grid of products.
 class ProductGrid extends StatelessWidget {
@@ -29,9 +29,9 @@ class ProductGrid extends StatelessWidget {
       initialData: catalogBloc.slice.value,
       builder: (context, snapshot) => GridView.builder(
             gridDelegate: _gridDelegate,
-            itemCount: snapshot.data.endIndex + _loadingSpace,
+            itemCount: snapshot.data!.endIndex + _loadingSpace,
             itemBuilder: (context, index) =>
-                _createSquare(index, snapshot.data, catalogBloc, cartBloc),
+                _createSquare(index, snapshot.data as CatalogSlice, catalogBloc, cartBloc),
           ),
     );
   }
