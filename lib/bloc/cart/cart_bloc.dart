@@ -40,7 +40,7 @@ class CartBloc {
       .distinct()
       // Since we're using the distinct operator, we need to convert back
       // to a ValueObservable using shareValue.
-      .shareValue();
+      .shareValueSeeded(0);
 
   /// This is the stream of items in the cart. Use this to show the contents
   /// of the cart when you need all the information in [CartItem].

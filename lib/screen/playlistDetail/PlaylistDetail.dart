@@ -159,7 +159,7 @@ class Body extends StatelessWidget {
     Map<int, dynamic> maps = playlist.tracks!.asMap();
 
     return Container(
-      child: Column(
+      child: ListView(
         children: maps.keys
             .map((index) => TrackCard(maps[index] as Track, index + 1))
             .toList(),
