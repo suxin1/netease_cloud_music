@@ -53,6 +53,7 @@ dependencies:
 
   fluro: ^2.0.3
   sliding_up_panel: ^2.0.0+1
+  audio_service: ^0.18.10
 
 dev_dependencies:
   flutter_test:
