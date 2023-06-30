@@ -1,6 +1,8 @@
 import "package:flutter/material.dart";
 import 'package:audio_service/audio_service.dart';
+import 'package:get_it/get_it.dart';
 import 'package:shared_preferences/shared_preferences.dart';
+import 'package:just_audio/just_audio.dart';
 
 import 'package:netease_cloud_music/service/service.dart';
 import 'package:netease_cloud_music/service/user/user.dart';
@@ -26,7 +28,7 @@ void main() {
 void runAppAsync() async {
   SharedPreferences prefs = await SharedPreferences.getInstance();
   String? accountStr = prefs.getString(ACCOUNT_DATA_KEY);
-  String initialPage = accountStr != null ? '/login': '/home';
+  String initialPage = accountStr != null ? '/login' : '/home';
   runApp(AppComponent(initialPage: initialPage));
   // if (accountStr != null) {
   //   runApp(
@@ -54,7 +56,17 @@ class AudioPlayerHandler extends BaseAudioHandler {
 }
 
 Future<void> startService() async {
-  final AudioPlayerHandler audioHander = await AudioService.init(
-    builder: () =>
-  )
+  final AudioPlayerHandler audioHandler = await AudioService.init(
+      builder: () => AudioPlayerHandler(),
+      config: AudioServiceConfig(
+        androidNotificationChannelId: 'com.shadow.blackhole.channel.audio',
+        androidNotificationChannelName: 'BlackHole',
+        androidNotificationIcon: 'drawable/ic_stat_music_note',
+        androidShowNotificationBadge: true,
+        androidStopForegroundOnPause: false,
+        // Hive.box('settings').get('stopServiceOnPause', defaultValue: true) as bool,
+        notificationColor: Colors.grey[900],
+      ));
+
+    GetIt.I.registerSingleton<AudioPlayerHandler>(audioHandler);
 }

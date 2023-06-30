@@ -53,7 +53,12 @@ dependencies:
 
   fluro: ^2.0.3
   sliding_up_panel: ^2.0.0+1
+  # audio related
   audio_service: ^0.18.10
+  just_audio: ^0.9.34
+  # app database
+  isar: ^3.1.0+1
+  isar_flutter_libs: ^3.1.0+1
 
 dev_dependencies:
   flutter_test:
@@ -68,6 +73,7 @@ dev_dependencies:
 
   build_runner: ^2.3.0
   built_value_generator: ^8.4.1
+  isar_generator: ^3.1.0+1
 
 # For information on the generic Dart part of this file, see the
 # following page: https://dart.dev/tools/pub/pubspec
